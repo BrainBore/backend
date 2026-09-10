@@ -7,11 +7,12 @@ export declare const NullTypes: {
     JsonNull: (new (secret: never) => typeof runtime.JsonNull);
     AnyNull: (new (secret: never) => typeof runtime.AnyNull);
 };
-export declare const DbNull: import("@prisma/client/runtime/client").DbNullClass;
-export declare const JsonNull: import("@prisma/client/runtime/client").JsonNullClass;
-export declare const AnyNull: import("@prisma/client/runtime/client").AnyNullClass;
+export declare const DbNull: import("@prisma/client-runtime-utils").DbNullClass;
+export declare const JsonNull: import("@prisma/client-runtime-utils").JsonNullClass;
+export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClass;
 export declare const ModelName: {
     readonly User: "User";
+    readonly SeccionPagina: "SeccionPagina";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -27,6 +28,13 @@ export declare const UserScalarFieldEnum: {
     readonly password: "password";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export declare const SeccionPaginaScalarFieldEnum: {
+    readonly claveCampo: "claveCampo";
+    readonly paginaSlug: "paginaSlug";
+    readonly valor: "valor";
+    readonly tipo: "tipo";
+};
+export type SeccionPaginaScalarFieldEnum = (typeof SeccionPaginaScalarFieldEnum)[keyof typeof SeccionPaginaScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

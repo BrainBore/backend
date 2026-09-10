@@ -12,3 +12,12 @@ model User {
   email    String @unique
   password String
 }
+
+model SeccionPagina {
+  claveCampo String @id @map("clave_campo") @db.VarChar(255)
+  paginaSlug String @map("pagina_slug") @db.VarChar(255)
+  valor      String @db.Text
+  tipo       String @db.VarChar(255)
+
+  @@map("seccion_pagina")
+}

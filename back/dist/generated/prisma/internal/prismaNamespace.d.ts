@@ -161,6 +161,7 @@ export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>;
 type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>;
 export declare const ModelName: {
     readonly User: "User";
+    readonly SeccionPagina: "SeccionPagina";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -173,7 +174,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user";
+        modelProps: "user" | "seccionPagina";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -251,6 +252,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        SeccionPagina: {
+            payload: Prisma.$SeccionPaginaPayload<ExtArgs>;
+            fields: Prisma.SeccionPaginaFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.SeccionPaginaFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.SeccionPaginaFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                findFirst: {
+                    args: Prisma.SeccionPaginaFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.SeccionPaginaFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                findMany: {
+                    args: Prisma.SeccionPaginaFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[];
+                };
+                create: {
+                    args: Prisma.SeccionPaginaCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                createMany: {
+                    args: Prisma.SeccionPaginaCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.SeccionPaginaCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[];
+                };
+                delete: {
+                    args: Prisma.SeccionPaginaDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                update: {
+                    args: Prisma.SeccionPaginaUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.SeccionPaginaDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.SeccionPaginaUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.SeccionPaginaUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[];
+                };
+                upsert: {
+                    args: Prisma.SeccionPaginaUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>;
+                };
+                aggregate: {
+                    args: Prisma.SeccionPaginaAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateSeccionPagina>;
+                };
+                groupBy: {
+                    args: Prisma.SeccionPaginaGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.SeccionPaginaGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.SeccionPaginaCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.SeccionPaginaCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -288,6 +363,13 @@ export declare const UserScalarFieldEnum: {
     readonly password: "password";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export declare const SeccionPaginaScalarFieldEnum: {
+    readonly claveCampo: "claveCampo";
+    readonly paginaSlug: "paginaSlug";
+    readonly valor: "valor";
+    readonly tipo: "tipo";
+};
+export type SeccionPaginaScalarFieldEnum = (typeof SeccionPaginaScalarFieldEnum)[keyof typeof SeccionPaginaScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -331,6 +413,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter;
 export type GlobalOmitConfig = {
     user?: Prisma.UserOmit;
+    seccionPagina?: Prisma.SeccionPaginaOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

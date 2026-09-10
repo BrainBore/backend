@@ -16,7 +16,7 @@ export function PublicRoute() {
   const session = authStateService.getSession()
 
   if (session) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to="/editor-texto" replace />
   }
 
   return <Outlet />

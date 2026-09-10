@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  SeccionPagina: 'SeccionPagina'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -77,6 +78,16 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const SeccionPaginaScalarFieldEnum = {
+  claveCampo: 'claveCampo',
+  paginaSlug: 'paginaSlug',
+  valor: 'valor',
+  tipo: 'tipo'
+} as const
+
+export type SeccionPaginaScalarFieldEnum = (typeof SeccionPaginaScalarFieldEnum)[keyof typeof SeccionPaginaScalarFieldEnum]
 
 
 export const SortOrder = {

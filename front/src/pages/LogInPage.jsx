@@ -24,7 +24,7 @@ export default function LogInPage() {
 
     try {
       await authService.logIn(form.email, form.password)
-      navigate('/dashboard')
+      navigate('/editor-texto')
     } catch (error) {
       setErrorMsg(error.message)
     }

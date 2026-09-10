@@ -397,7 +397,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  SeccionPagina: 'SeccionPagina'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "user" | "seccionPagina"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -491,6 +492,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SeccionPagina: {
+      payload: Prisma.$SeccionPaginaPayload<ExtArgs>
+      fields: Prisma.SeccionPaginaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SeccionPaginaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SeccionPaginaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        findFirst: {
+          args: Prisma.SeccionPaginaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SeccionPaginaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        findMany: {
+          args: Prisma.SeccionPaginaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[]
+        }
+        create: {
+          args: Prisma.SeccionPaginaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        createMany: {
+          args: Prisma.SeccionPaginaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SeccionPaginaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[]
+        }
+        delete: {
+          args: Prisma.SeccionPaginaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        update: {
+          args: Prisma.SeccionPaginaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        deleteMany: {
+          args: Prisma.SeccionPaginaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SeccionPaginaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SeccionPaginaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>[]
+        }
+        upsert: {
+          args: Prisma.SeccionPaginaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeccionPaginaPayload>
+        }
+        aggregate: {
+          args: Prisma.SeccionPaginaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSeccionPagina>
+        }
+        groupBy: {
+          args: Prisma.SeccionPaginaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SeccionPaginaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SeccionPaginaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SeccionPaginaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -537,6 +612,16 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const SeccionPaginaScalarFieldEnum = {
+  claveCampo: 'claveCampo',
+  paginaSlug: 'paginaSlug',
+  valor: 'valor',
+  tipo: 'tipo'
+} as const
+
+export type SeccionPaginaScalarFieldEnum = (typeof SeccionPaginaScalarFieldEnum)[keyof typeof SeccionPaginaScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -740,6 +825,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
+  seccionPagina?: Prisma.SeccionPaginaOmit
 }
 
 /* Types for Logging */

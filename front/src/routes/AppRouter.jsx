@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { PrivateRoute, PublicRoute } from './auth.guard'
 import LogInPage from '../pages/LogInPage'
 import SignUpPage from '../pages/SignUpPage'
-import DashboardPage from '../pages/DashboardPage'
+import TextEditorPage from '../pages/TextEditorPage'
 
 function AppRouter() {
   return (
@@ -14,10 +14,10 @@ function AppRouter() {
       </Route>
 
       <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/editor-texto" element={<TextEditorPage />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/editor-texto" replace />} />
     </Routes>
   )
 }
