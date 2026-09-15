@@ -13,6 +13,8 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const auth_module_1 = require("./auth/auth.module");
 const prisma_module_1 = require("./prisma/prisma.module");
+const plantel_module_1 = require("./plantel/plantel.module");
+const estudiante_autoridad_module_1 = require("./estudiante-autoridad/estudiante-autoridad.module");
 const seccion_pagina_module_1 = require("./seccion-pagina/seccion-pagina.module");
 const users_module_1 = require("./users/users.module");
 let AppModule = class AppModule {
@@ -26,6 +28,8 @@ exports.AppModule = AppModule = __decorate([
             }),
             auth_module_1.AuthModule,
             prisma_module_1.PrismaModule,
+            plantel_module_1.PlantelModule,
+            estudiante_autoridad_module_1.EstudianteAutoridadModule,
             seccion_pagina_module_1.SeccionPaginaModule,
             users_module_1.UsersModule,
         ],

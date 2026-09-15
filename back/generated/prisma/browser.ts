@@ -27,3 +27,23 @@ export type User = Prisma.UserModel
  * 
  */
 export type SeccionPagina = Prisma.SeccionPaginaModel
+/**
+ * Model Docente
+ * 
+ */
+export type Docente = Prisma.DocenteModel
+/**
+ * Model Administrativo
+ * 
+ */
+export type Administrativo = Prisma.AdministrativoModel
+/**
+ * Model Auxiliar
+ * 
+ */
+export type Auxiliar = Prisma.AuxiliarModel
+/**
+ * Model EstudianteAutoridad
+ * 
+ */
+export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel

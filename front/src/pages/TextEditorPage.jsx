@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { seccionPaginaService } from '../services/seccion-pagina.service'
 import { authStateService } from '../services/auth-state.service'
+import PlantelCrud from '../components/PlantelCrud'
+import EstudianteAutoridadCrud from '../components/EstudianteAutoridadCrud'
 
 const pageGroups = [
   { label: 'Inicio', items: [{ slug: '/', label: 'Inicio' }] },
@@ -298,7 +300,23 @@ export default function TextEditorPage() {
           </aside>
 
           <section className="flex min-w-0 flex-col p-5 sm:p-8">
-            {activeSection ? (
+            {activePageSlug === '/institucional/autoridades' ? (
+              <>
+                <div className="mb-6 border-b border-slate-200 pb-5">
+                  <h2 className="text-xl font-bold text-slate-800">Autoridades estudiantiles</h2>
+                  <p className="mt-1 text-sm text-slate-500">Administra los representantes estudiantiles de la carrera.</p>
+                </div>
+                <EstudianteAutoridadCrud />
+              </>
+            ) : activePageSlug === '/institucional/docentes' ? (
+              <>
+                <div className="mb-6 border-b border-slate-200 pb-5">
+                  <h2 className="text-xl font-bold text-slate-800">Plantel docente y administrativo</h2>
+                  <p className="mt-1 text-sm text-slate-500">Administra los registros que se muestran en esta sección.</p>
+                </div>
+                <PlantelCrud />
+              </>
+            ) : activeSection ? (
               <>
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-4 border-b border-slate-200 pb-5">
                   <div>

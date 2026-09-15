@@ -13,6 +13,10 @@ export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClas
 export declare const ModelName: {
     readonly User: "User";
     readonly SeccionPagina: "SeccionPagina";
+    readonly Docente: "Docente";
+    readonly Administrativo: "Administrativo";
+    readonly Auxiliar: "Auxiliar";
+    readonly EstudianteAutoridad: "EstudianteAutoridad";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -35,6 +39,44 @@ export declare const SeccionPaginaScalarFieldEnum: {
     readonly tipo: "tipo";
 };
 export type SeccionPaginaScalarFieldEnum = (typeof SeccionPaginaScalarFieldEnum)[keyof typeof SeccionPaginaScalarFieldEnum];
+export declare const DocenteScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly gradoAcademico: "gradoAcademico";
+    readonly tipo: "tipo";
+    readonly resumenCv: "resumenCv";
+    readonly correoInstitucional: "correoInstitucional";
+    readonly cargoAutoridad: "cargoAutoridad";
+    readonly imagen: "imagen";
+};
+export type DocenteScalarFieldEnum = (typeof DocenteScalarFieldEnum)[keyof typeof DocenteScalarFieldEnum];
+export declare const AdministrativoScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly cargo: "cargo";
+    readonly correoInstitucional: "correoInstitucional";
+    readonly foto: "foto";
+};
+export type AdministrativoScalarFieldEnum = (typeof AdministrativoScalarFieldEnum)[keyof typeof AdministrativoScalarFieldEnum];
+export declare const AuxiliarScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly tipo: "tipo";
+    readonly foto: "foto";
+    readonly materia: "materia";
+    readonly paralelo: "paralelo";
+    readonly diasAuxiliatura: "diasAuxiliatura";
+    readonly horarioAuxiliatura: "horarioAuxiliatura";
+    readonly aula: "aula";
+};
+export type AuxiliarScalarFieldEnum = (typeof AuxiliarScalarFieldEnum)[keyof typeof AuxiliarScalarFieldEnum];
+export declare const EstudianteAutoridadScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly cargo: "cargo";
+    readonly imagen: "imagen";
+};
+export type EstudianteAutoridadScalarFieldEnum = (typeof EstudianteAutoridadScalarFieldEnum)[keyof typeof EstudianteAutoridadScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -45,3 +87,8 @@ export declare const QueryMode: {
     readonly insensitive: "insensitive";
 };
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
+export declare const NullsOrder: {
+    readonly first: "first";
+    readonly last: "last";
+};
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];

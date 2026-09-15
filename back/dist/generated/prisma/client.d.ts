@@ -8,3 +8,7 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma };
 export type User = Prisma.UserModel;
 export type SeccionPagina = Prisma.SeccionPaginaModel;
+export type Docente = Prisma.DocenteModel;
+export type Administrativo = Prisma.AdministrativoModel;
+export type Auxiliar = Prisma.AuxiliarModel;
+export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel;

@@ -36,5 +36,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get seccionPagina(): Prisma.SeccionPaginaDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get docente(): Prisma.DocenteDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get administrativo(): Prisma.AdministrativoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get auxiliar(): Prisma.AuxiliarDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get estudianteAutoridad(): Prisma.EstudianteAutoridadDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;

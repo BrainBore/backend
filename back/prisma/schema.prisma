@@ -21,3 +21,49 @@ model SeccionPagina {
 
   @@map("seccion_pagina")
 }
+
+model Docente {
+  id                    Int    @id @default(autoincrement())
+  nombre                String @db.VarChar(255)
+  gradoAcademico        String @map("grado_academico") @db.VarChar(255)
+  tipo                  String @db.VarChar(255)
+  resumenCv             String @map("resumen_cv") @db.VarChar(500)
+  correoInstitucional   String @map("correo_institucional") @db.VarChar(255)
+  cargoAutoridad        String? @map("cargo_autoridad") @db.VarChar(255)
+  imagen                String @db.VarChar(255)
+
+  @@map("docente")
+}
+
+model Administrativo {
+  id                  Int    @id @default(autoincrement())
+  nombre              String @db.VarChar(255)
+  cargo               String @db.VarChar(255)
+  correoInstitucional String @map("correo_institucional") @db.VarChar(255)
+  foto                String @db.VarChar(255)
+
+  @@map("administrativo")
+}
+
+model Auxiliar {
+  id                  Int    @id @default(autoincrement())
+  nombre              String @db.VarChar(255)
+  tipo                String @db.VarChar(255)
+  foto                String @db.VarChar(255)
+  materia             String? @db.VarChar(255)
+  paralelo            String? @db.VarChar(255)
+  diasAuxiliatura     String? @map("dias_auxiliatura") @db.VarChar(255)
+  horarioAuxiliatura  String? @map("horario_auxiliatura") @db.VarChar(255)
+  aula                String? @db.VarChar(255)
+
+  @@map("auxiliar")
+}
+
+model EstudianteAutoridad {
+  id     Int    @id @default(autoincrement())
+  nombre String @db.VarChar(255)
+  cargo  String @db.VarChar(255)
+  imagen String @db.VarChar(255)
+
+  @@map("estudiante_autoridad")
+}

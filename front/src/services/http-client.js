@@ -3,14 +3,18 @@ import { authStateService } from './auth-state.service'
 
 export async function httpClient(path, options = {}) {
   const session = authStateService.getSession()
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+  }
+
+  if (session?.access_token) {
+    headers.Authorization = `Bearer ${session.access_token}`
+  }
 
   const response = await fetch(`${environment.API_URL}${path}`, {
     ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-      Authorization: `Bearer ${session?.access_token}`,
-    },
+    headers,
   })
 
   if (response.status === 401) {

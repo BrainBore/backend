@@ -4,3 +4,7 @@ export * as $Enums from './enums';
 export * from './enums';
 export type User = Prisma.UserModel;
 export type SeccionPagina = Prisma.SeccionPaginaModel;
+export type Docente = Prisma.DocenteModel;
+export type Administrativo = Prisma.AdministrativoModel;
+export type Auxiliar = Prisma.AuxiliarModel;
+export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel;
