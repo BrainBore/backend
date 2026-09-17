@@ -5,6 +5,24 @@ import { authStateService } from '../services/auth-state.service'
 import PlantelCrud from '../components/PlantelCrud'
 import EstudianteAutoridadCrud from '../components/EstudianteAutoridadCrud'
 import ConvenioCrud from '../components/ConvenioCrud'
+import {
+  IconSearch,
+  IconFileText,
+  IconImage,
+  IconHandshake,
+  IconGraduationCap,
+  IconUsers,
+  IconChevronDown,
+  IconArrowLeft,
+  IconArrowRight,
+  IconClose,
+  IconSave,
+  IconUpload,
+  IconLogOut,
+  IconLock,
+  IconCheck,
+  IconAlertCircle,
+} from '../components/Icons'
 
 const pageGroups = [
   { label: 'Inicio', items: [{ slug: '/', label: 'Inicio' }] },
@@ -356,9 +374,10 @@ export default function TextEditorPage() {
           <button
             type="button"
             onClick={signOut}
-            className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-umsa-blue hover:text-umsa-blue"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-umsa-blue hover:text-umsa-blue shadow-2xs"
           >
-            Cerrar sesión
+            <IconLogOut className="h-4 w-4 text-slate-500" />
+            <span>Cerrar sesión</span>
           </button>
         </div>
 
@@ -403,7 +422,11 @@ export default function TextEditorPage() {
                   }`}
                 >
                   {group.label}
-                  <span className="ml-2 text-xs">{openNavGroup === groupIndex ? '▲' : '▼'}</span>
+                  <IconChevronDown
+                    className={`ml-2 inline-block h-3.5 w-3.5 transition-transform duration-200 ${
+                      openNavGroup === groupIndex ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
                 {openNavGroup === groupIndex && (
                   <div className="absolute left-0 top-full z-20 min-w-72 rounded-b-xl rounded-tr-xl border border-slate-200 bg-white p-2 shadow-xl">
@@ -470,17 +493,17 @@ export default function TextEditorPage() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-8 pr-7 text-xs text-slate-800 outline-none placeholder:text-slate-400 focus:border-umsa-blue focus:ring-2 focus:ring-sky-100"
                 />
-                <span className="pointer-events-none absolute left-2.5 top-2 text-xs text-slate-400">
-                  🔍
+                <span className="pointer-events-none absolute left-2.5 top-2.5 text-slate-400">
+                  <IconSearch className="h-3.5 w-3.5" />
                 </span>
                 {searchTerm && (
                   <button
                     type="button"
                     onClick={() => setSearchTerm('')}
-                    className="absolute right-2 top-1.5 text-xs text-slate-400 hover:text-slate-700"
+                    className="absolute right-2 top-2 text-slate-400 hover:text-slate-700 transition"
                     title="Limpiar búsqueda"
                   >
-                    ✕
+                    <IconClose className="h-3.5 w-3.5" />
                   </button>
                 )}
               </div>
@@ -589,9 +612,11 @@ export default function TextEditorPage() {
                         className="flex w-full items-center justify-between px-3 py-2.5 text-left text-xs font-bold transition hover:bg-slate-50"
                       >
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] text-slate-400">
-                            {isOpen ? '▼' : '▶'}
-                          </span>
+                          <IconChevronDown
+                            className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${
+                              isOpen ? 'rotate-0' : '-rotate-90'
+                            }`}
+                          />
                           <span
                             className={
                               hasActiveSection ? 'font-bold text-umsa-blue' : 'text-slate-700'
@@ -634,7 +659,7 @@ export default function TextEditorPage() {
                                     {section.subKey || section.claveCampo}
                                   </span>
                                   <span
-                                    className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium ${
+                                    className={`shrink-0 inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-medium ${
                                       isSelected
                                         ? 'bg-white/20 text-white'
                                         : isImage
@@ -642,7 +667,17 @@ export default function TextEditorPage() {
                                         : 'bg-slate-100 text-slate-600'
                                     }`}
                                   >
-                                    {isImage ? '🖼️ img' : '📝 txt'}
+                                    {isImage ? (
+                                      <>
+                                        <IconImage className="h-3 w-3" />
+                                        <span>img</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <IconFileText className="h-3 w-3" />
+                                        <span>txt</span>
+                                      </>
+                                    )}
                                   </span>
                                 </div>
                                 <div
@@ -680,28 +715,40 @@ export default function TextEditorPage() {
                 <button
                   type="button"
                   onClick={() => setPageMode('textos')}
-                  className={`rounded-lg px-4 py-2 text-xs font-bold transition ${
+                  className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
                     pageMode === 'textos'
-                      ? 'bg-umsa-blue text-white shadow-sm'
+                      ? 'bg-umsa-blue text-white shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  📝 Textos e Imágenes de Página
+                  <IconFileText className="h-3.5 w-3.5" />
+                  <span>Contenido de Página</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setPageMode('crud')}
-                  className={`rounded-lg px-4 py-2 text-xs font-bold transition ${
+                  className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
                     pageMode === 'crud'
-                      ? 'bg-umsa-blue text-white shadow-sm'
+                      ? 'bg-umsa-blue text-white shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  {activePageSlug === '/institucional/convenios'
-                    ? '🤝 Gestión de Convenios (CRUD)'
-                    : activePageSlug === '/institucional/autoridades'
-                    ? '🎓 Autoridades Estudiantiles (CRUD)'
-                    : '👥 Plantel (Docentes, Administrativos, Auxiliares CRUD)'}
+                  {activePageSlug === '/institucional/convenios' ? (
+                    <>
+                      <IconHandshake className="h-3.5 w-3.5" />
+                      <span>Convenios Interinstitucionales</span>
+                    </>
+                  ) : activePageSlug === '/institucional/autoridades' ? (
+                    <>
+                      <IconGraduationCap className="h-3.5 w-3.5" />
+                      <span>Representación Estudiantil (HCC)</span>
+                    </>
+                  ) : (
+                    <>
+                      <IconUsers className="h-3.5 w-3.5" />
+                      <span>Plantel Docente y Administrativo</span>
+                    </>
+                  )}
                 </button>
               </div>
             )}
@@ -770,10 +817,11 @@ export default function TextEditorPage() {
                           onClick={() =>
                             selectSection(activeGroupSections[activeIndexInGroup - 1].claveCampo)
                           }
-                          className="rounded border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-xs transition hover:bg-slate-50 hover:text-umsa-blue disabled:cursor-not-allowed disabled:opacity-30"
+                          className="inline-flex items-center gap-1 rounded border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-xs transition hover:bg-slate-50 hover:text-umsa-blue disabled:cursor-not-allowed disabled:opacity-30"
                           title="Sección anterior en este grupo"
                         >
-                          ← Anterior
+                          <IconArrowLeft className="h-3 w-3" />
+                          <span>Anterior</span>
                         </button>
                         <button
                           type="button"
@@ -781,10 +829,11 @@ export default function TextEditorPage() {
                           onClick={() =>
                             selectSection(activeGroupSections[activeIndexInGroup + 1].claveCampo)
                           }
-                          className="rounded border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-xs transition hover:bg-slate-50 hover:text-umsa-blue disabled:cursor-not-allowed disabled:opacity-30"
+                          className="inline-flex items-center gap-1 rounded border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-xs transition hover:bg-slate-50 hover:text-umsa-blue disabled:cursor-not-allowed disabled:opacity-30"
                           title="Siguiente sección en este grupo"
                         >
-                          Siguiente →
+                          <span>Siguiente</span>
+                          <IconArrowRight className="h-3 w-3" />
                         </button>
                       </div>
                     </div>
@@ -808,21 +857,25 @@ export default function TextEditorPage() {
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="section-type"
-                      className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400"
+                    <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                      Tipo de dato
+                    </span>
+                    <div
+                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100/90 px-3.5 py-2 text-sm font-semibold text-slate-600 shadow-2xs select-none cursor-default"
+                      title="Tipo de dato no editable"
                     >
-                      Tipo de campo
-                    </label>
-                    <select
-                      id="section-type"
-                      value={activeSection.tipo}
-                      onChange={(event) => updateActiveSection('tipo', event.target.value)}
-                      className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium outline-none focus:border-umsa-blue focus:ring-2 focus:ring-sky-100"
-                    >
-                      <option value="texto">Texto</option>
-                      <option value="imagen">Imagen</option>
-                    </select>
+                      {activeSection.tipo === 'imagen' ? (
+                        <>
+                          <IconImage className="h-4 w-4 text-slate-500" />
+                          <span className="text-slate-600">Imagen / Archivo</span>
+                        </>
+                      ) : (
+                        <>
+                          <IconFileText className="h-4 w-4 text-slate-500" />
+                          <span className="text-slate-600">Texto</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -841,9 +894,10 @@ export default function TextEditorPage() {
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-fit rounded-lg border border-dashed border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-umsa-blue hover:text-umsa-blue"
+                      className="inline-flex items-center gap-2 w-fit rounded-lg border border-dashed border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-umsa-blue hover:text-umsa-blue hover:bg-sky-50/50"
                     >
-                      Seleccionar imagen local
+                      <IconUpload className="h-4 w-4" />
+                      <span>Seleccionar imagen local</span>
                     </button>
                     <input
                       ref={fileInputRef}
@@ -881,18 +935,27 @@ export default function TextEditorPage() {
 
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-5">
                   <div aria-live="polite" className="text-sm">
-                    {error && <span className="font-semibold text-red-600">{error}</span>}
+                    {error && (
+                      <span className="inline-flex items-center gap-1.5 font-semibold text-red-600">
+                        <IconAlertCircle className="h-4 w-4" />
+                        {error}
+                      </span>
+                    )}
                     {!error && message && (
-                      <span className="font-semibold text-emerald-600">{message}</span>
+                      <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-600">
+                        <IconCheck className="h-4 w-4" />
+                        {message}
+                      </span>
                     )}
                   </div>
                   <button
                     type="button"
                     onClick={saveSection}
                     disabled={saving}
-                    className="rounded-lg bg-umsa-blue px-6 py-2.5 text-sm font-bold text-white shadow-xs transition hover:bg-sky-900 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex items-center gap-2 rounded-lg bg-umsa-blue px-6 py-2.5 text-sm font-bold text-white shadow-xs transition hover:bg-sky-900 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    {saving ? 'Guardando...' : 'Guardar sección'}
+                    <IconSave className="h-4 w-4" />
+                    <span>{saving ? 'Guardando...' : 'Guardar sección'}</span>
                   </button>
                 </div>
               </>
