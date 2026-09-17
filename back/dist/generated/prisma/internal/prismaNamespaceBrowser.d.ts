@@ -17,6 +17,7 @@ export declare const ModelName: {
     readonly Administrativo: "Administrativo";
     readonly Auxiliar: "Auxiliar";
     readonly EstudianteAutoridad: "EstudianteAutoridad";
+    readonly Convenio: "Convenio";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -77,6 +78,13 @@ export declare const EstudianteAutoridadScalarFieldEnum: {
     readonly imagen: "imagen";
 };
 export type EstudianteAutoridadScalarFieldEnum = (typeof EstudianteAutoridadScalarFieldEnum)[keyof typeof EstudianteAutoridadScalarFieldEnum];
+export declare const ConvenioScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly descripcion: "descripcion";
+    readonly sector: "sector";
+};
+export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

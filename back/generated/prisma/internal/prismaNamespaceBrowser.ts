@@ -56,7 +56,8 @@ export const ModelName = {
   Docente: 'Docente',
   Administrativo: 'Administrativo',
   Auxiliar: 'Auxiliar',
-  EstudianteAutoridad: 'EstudianteAutoridad'
+  EstudianteAutoridad: 'EstudianteAutoridad',
+  Convenio: 'Convenio'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -142,6 +143,16 @@ export const EstudianteAutoridadScalarFieldEnum = {
 } as const
 
 export type EstudianteAutoridadScalarFieldEnum = (typeof EstudianteAutoridadScalarFieldEnum)[keyof typeof EstudianteAutoridadScalarFieldEnum]
+
+
+export const ConvenioScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  sector: 'sector'
+} as const
+
+export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -8,3 +8,4 @@ export type Docente = Prisma.DocenteModel;
 export type Administrativo = Prisma.AdministrativoModel;
 export type Auxiliar = Prisma.AuxiliarModel;
 export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel;
+export type Convenio = Prisma.ConvenioModel;

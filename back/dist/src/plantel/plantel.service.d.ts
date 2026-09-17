@@ -5,9 +5,9 @@ export declare class PlantelService {
     constructor(prismaService: PrismaService);
     findAll(tipo: PlantelTipo): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<{
         id: number;
-        tipo: string;
         nombre: string;
         gradoAcademico: string;
+        tipo: string;
         resumenCv: string;
         correoInstitucional: string;
         cargoAutoridad: string | null;
@@ -15,9 +15,9 @@ export declare class PlantelService {
     }[]>;
     create(tipo: PlantelTipo, data: Record<string, string>): Promise<{
         id: number;
-        tipo: string;
         nombre: string;
         gradoAcademico: string;
+        tipo: string;
         resumenCv: string;
         correoInstitucional: string;
         cargoAutoridad: string | null;
@@ -25,9 +25,9 @@ export declare class PlantelService {
     }>;
     update(tipo: PlantelTipo, id: number, data: Record<string, string>): Promise<{
         id: number;
-        tipo: string;
         nombre: string;
         gradoAcademico: string;
+        tipo: string;
         resumenCv: string;
         correoInstitucional: string;
         cargoAutoridad: string | null;
@@ -35,9 +35,9 @@ export declare class PlantelService {
     }>;
     remove(tipo: PlantelTipo, id: number): Promise<{
         id: number;
-        tipo: string;
         nombre: string;
         gradoAcademico: string;
+        tipo: string;
         resumenCv: string;
         correoInstitucional: string;
         cargoAutoridad: string | null;

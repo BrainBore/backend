@@ -17,6 +17,7 @@ const plantel_module_1 = require("./plantel/plantel.module");
 const estudiante_autoridad_module_1 = require("./estudiante-autoridad/estudiante-autoridad.module");
 const seccion_pagina_module_1 = require("./seccion-pagina/seccion-pagina.module");
 const users_module_1 = require("./users/users.module");
+const convenio_module_1 = require("./convenio/convenio.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -32,6 +33,7 @@ exports.AppModule = AppModule = __decorate([
             estudiante_autoridad_module_1.EstudianteAutoridadModule,
             seccion_pagina_module_1.SeccionPaginaModule,
             users_module_1.UsersModule,
+            convenio_module_1.ConvenioModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

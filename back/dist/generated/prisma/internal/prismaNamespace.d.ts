@@ -166,6 +166,7 @@ export declare const ModelName: {
     readonly Administrativo: "Administrativo";
     readonly Auxiliar: "Auxiliar";
     readonly EstudianteAutoridad: "EstudianteAutoridad";
+    readonly Convenio: "Convenio";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -178,7 +179,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad";
+        modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad" | "convenio";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -626,6 +627,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        Convenio: {
+            payload: Prisma.$ConvenioPayload<ExtArgs>;
+            fields: Prisma.ConvenioFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.ConvenioFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.ConvenioFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                findFirst: {
+                    args: Prisma.ConvenioFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.ConvenioFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                findMany: {
+                    args: Prisma.ConvenioFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[];
+                };
+                create: {
+                    args: Prisma.ConvenioCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                createMany: {
+                    args: Prisma.ConvenioCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.ConvenioCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[];
+                };
+                delete: {
+                    args: Prisma.ConvenioDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                update: {
+                    args: Prisma.ConvenioUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.ConvenioDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.ConvenioUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.ConvenioUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[];
+                };
+                upsert: {
+                    args: Prisma.ConvenioUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ConvenioAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateConvenio>;
+                };
+                groupBy: {
+                    args: Prisma.ConvenioGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ConvenioGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.ConvenioCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ConvenioCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -708,6 +783,13 @@ export declare const EstudianteAutoridadScalarFieldEnum: {
     readonly imagen: "imagen";
 };
 export type EstudianteAutoridadScalarFieldEnum = (typeof EstudianteAutoridadScalarFieldEnum)[keyof typeof EstudianteAutoridadScalarFieldEnum];
+export declare const ConvenioScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly descripcion: "descripcion";
+    readonly sector: "sector";
+};
+export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -763,6 +845,7 @@ export type GlobalOmitConfig = {
     administrativo?: Prisma.AdministrativoOmit;
     auxiliar?: Prisma.AuxiliarOmit;
     estudianteAutoridad?: Prisma.EstudianteAutoridadOmit;
+    convenio?: Prisma.ConvenioOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

@@ -402,7 +402,8 @@ export const ModelName = {
   Docente: 'Docente',
   Administrativo: 'Administrativo',
   Auxiliar: 'Auxiliar',
-  EstudianteAutoridad: 'EstudianteAutoridad'
+  EstudianteAutoridad: 'EstudianteAutoridad',
+  Convenio: 'Convenio'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -418,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad"
+    modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad" | "convenio"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -866,6 +867,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Convenio: {
+      payload: Prisma.$ConvenioPayload<ExtArgs>
+      fields: Prisma.ConvenioFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConvenioFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConvenioFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        findFirst: {
+          args: Prisma.ConvenioFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConvenioFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        findMany: {
+          args: Prisma.ConvenioFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[]
+        }
+        create: {
+          args: Prisma.ConvenioCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        createMany: {
+          args: Prisma.ConvenioCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ConvenioCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[]
+        }
+        delete: {
+          args: Prisma.ConvenioDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        update: {
+          args: Prisma.ConvenioUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConvenioDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConvenioUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ConvenioUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>[]
+        }
+        upsert: {
+          args: Prisma.ConvenioUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConvenioPayload>
+        }
+        aggregate: {
+          args: Prisma.ConvenioAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConvenio>
+        }
+        groupBy: {
+          args: Prisma.ConvenioGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConvenioGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConvenioCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConvenioCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -972,6 +1047,16 @@ export const EstudianteAutoridadScalarFieldEnum = {
 } as const
 
 export type EstudianteAutoridadScalarFieldEnum = (typeof EstudianteAutoridadScalarFieldEnum)[keyof typeof EstudianteAutoridadScalarFieldEnum]
+
+
+export const ConvenioScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  sector: 'sector'
+} as const
+
+export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1202,6 +1287,7 @@ export type GlobalOmitConfig = {
   administrativo?: Prisma.AdministrativoOmit
   auxiliar?: Prisma.AuxiliarOmit
   estudianteAutoridad?: Prisma.EstudianteAutoridadOmit
+  convenio?: Prisma.ConvenioOmit
 }
 
 /* Types for Logging */

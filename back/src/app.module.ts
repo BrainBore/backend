@@ -8,6 +8,7 @@ import { PlantelModule } from './plantel/plantel.module';
 import { EstudianteAutoridadModule } from './estudiante-autoridad/estudiante-autoridad.module';
 import { SeccionPaginaModule } from './seccion-pagina/seccion-pagina.module';
 import { UsersModule } from './users/users.module';
+import { ConvenioModule } from './convenio/convenio.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UsersModule } from './users/users.module';
     EstudianteAutoridadModule,
     SeccionPaginaModule,
     UsersModule,
+    ConvenioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = require("@prisma/client/runtime/index-browser");
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -17,7 +17,8 @@ exports.ModelName = {
     Docente: 'Docente',
     Administrativo: 'Administrativo',
     Auxiliar: 'Auxiliar',
-    EstudianteAutoridad: 'EstudianteAutoridad'
+    EstudianteAutoridad: 'EstudianteAutoridad',
+    Convenio: 'Convenio'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -69,6 +70,12 @@ exports.EstudianteAutoridadScalarFieldEnum = {
     nombre: 'nombre',
     cargo: 'cargo',
     imagen: 'imagen'
+};
+exports.ConvenioScalarFieldEnum = {
+    id: 'id',
+    titulo: 'titulo',
+    descripcion: 'descripcion',
+    sector: 'sector'
 };
 exports.SortOrder = {
     asc: 'asc',

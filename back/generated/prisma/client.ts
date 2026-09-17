@@ -69,3 +69,8 @@ export type Auxiliar = Prisma.AuxiliarModel
  * 
  */
 export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel
+/**
+ * Model Convenio
+ * 
+ */
+export type Convenio = Prisma.ConvenioModel
