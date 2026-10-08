@@ -9,6 +9,13 @@ import { EstudianteAutoridadModule } from './estudiante-autoridad/estudiante-aut
 import { SeccionPaginaModule } from './seccion-pagina/seccion-pagina.module';
 import { UsersModule } from './users/users.module';
 import { ConvenioModule } from './convenio/convenio.module';
+import { PlanEstudiosModule } from './plan-estudios/plan-estudios.module';
+import { MateriaPregradoModule } from './materia-pregrado/materia-pregrado.module';
+import { ConvalidaModule } from './convalida/convalida.module';
+import { ConvocatoriaModule } from './convocatoria/convocatoria.module';
+import { ProgramaModule } from './programa/programa.module';
+import { ModuloModule } from './modulo/modulo.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -22,6 +29,13 @@ import { ConvenioModule } from './convenio/convenio.module';
     SeccionPaginaModule,
     UsersModule,
     ConvenioModule,
+    PlanEstudiosModule,
+    MateriaPregradoModule,
+    ConvalidaModule,
+    ConvocatoriaModule,
+    ProgramaModule,
+    ModuloModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

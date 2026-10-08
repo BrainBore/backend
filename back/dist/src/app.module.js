@@ -18,6 +18,13 @@ const estudiante_autoridad_module_1 = require("./estudiante-autoridad/estudiante
 const seccion_pagina_module_1 = require("./seccion-pagina/seccion-pagina.module");
 const users_module_1 = require("./users/users.module");
 const convenio_module_1 = require("./convenio/convenio.module");
+const plan_estudios_module_1 = require("./plan-estudios/plan-estudios.module");
+const materia_pregrado_module_1 = require("./materia-pregrado/materia-pregrado.module");
+const convalida_module_1 = require("./convalida/convalida.module");
+const convocatoria_module_1 = require("./convocatoria/convocatoria.module");
+const programa_module_1 = require("./programa/programa.module");
+const modulo_module_1 = require("./modulo/modulo.module");
+const upload_module_1 = require("./upload/upload.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -34,6 +41,13 @@ exports.AppModule = AppModule = __decorate([
             seccion_pagina_module_1.SeccionPaginaModule,
             users_module_1.UsersModule,
             convenio_module_1.ConvenioModule,
+            plan_estudios_module_1.PlanEstudiosModule,
+            materia_pregrado_module_1.MateriaPregradoModule,
+            convalida_module_1.ConvalidaModule,
+            convocatoria_module_1.ConvocatoriaModule,
+            programa_module_1.ProgramaModule,
+            modulo_module_1.ModuloModule,
+            upload_module_1.UploadModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

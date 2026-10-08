@@ -2,9 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { seccionPaginaService } from '../services/seccion-pagina.service'
 import { authStateService } from '../services/auth-state.service'
+import { uploadService } from '../services/upload.service'
 import PlantelCrud from '../components/PlantelCrud'
 import EstudianteAutoridadCrud from '../components/EstudianteAutoridadCrud'
 import ConvenioCrud from '../components/ConvenioCrud'
+import MateriaPlanCrud from '../components/MateriaPlanCrud'
+import ConvalidaCrud from '../components/ConvalidaCrud'
+import ConvocatoriaCrud from '../components/ConvocatoriaCrud'
+import ProgramaCrud from '../components/ProgramaCrud'
+import ModuloCrud from '../components/ModuloCrud'
 import {
   IconSearch,
   IconFileText,
@@ -22,6 +28,12 @@ import {
   IconLock,
   IconCheck,
   IconAlertCircle,
+  IconBookOpen,
+  IconCalendar,
+  IconLayers,
+  IconTrash,
+  IconCopy,
+  IconExternalLink,
 } from '../components/Icons'
 
 const pageGroups = [
@@ -51,9 +63,9 @@ const pageGroups = [
   {
     label: 'Postgrado',
     items: [
-      { slug: '/postgrado', label: 'Maestría terminal' },
-      { slug: '/postgrado/maestria-autofinanciada', label: 'Maestría autofinanciada' },
-      { slug: '/postgrado/diplomados-especialidades', label: 'Diplomados y especialidades' },
+      { slug: '/postgrado/maestria-terminal', label: 'Maestría terminal', aliases: ['/postgrado'] },
+      { slug: '/postgrado/maestria-autofinanciada', label: 'Maestría autofinanciada', aliases: ['/postgrado/autofinanciada'] },
+      { slug: '/postgrado/diplomados', label: 'Diplomados y especialidades', aliases: ['/postgrado/diplomados-especialidades'] },
     ],
   },
   {
@@ -118,6 +130,13 @@ const KNOWN_GROUP_LABELS = {
   pasantia: 'Pasantías',
   revista: 'Revistas',
   biblioteca: 'Biblioteca',
+  aptitud: 'Aptitudes',
+  competencias: 'Competencias',
+  salidas: 'Salidas Laborales',
+  campo: 'Campo Ocupacional',
+  convalidacion: 'Convalidaciones',
+  calendario: 'Calendario Académico',
+  graduacion: 'Modalidades de Graduación',
 }
 
 function formatGroupLabel(groupKey) {
@@ -188,6 +207,10 @@ export default function TextEditorPage() {
   const [activeKey, setActiveKey] = useState('')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [copiedUrl, setCopiedUrl] = useState(false)
+  const [previewError, setPreviewError] = useState(false)
   const [message, setMessage] = useState(null)
   const [error, setError] = useState('')
 
@@ -268,7 +291,20 @@ export default function TextEditorPage() {
   const [pageMode, setPageMode] = useState('textos')
 
   const hasCrudForPage = (slug) =>
-    ['/institucional/convenios', '/institucional/autoridades', '/institucional/docentes'].includes(slug)
+    [
+      '/institucional/convenios',
+      '/institucional/autoridades',
+      '/institucional/docentes',
+      '/pregrado/malla-curricular',
+      '/pregrado/convalidaciones',
+      '/pregrado/admisiones',
+      '/postgrado/maestria-terminal',
+      '/postgrado',
+      '/postgrado/maestria-autofinanciada',
+      '/postgrado/autofinanciada',
+      '/postgrado/diplomados',
+      '/postgrado/diplomados-especialidades',
+    ].includes(slug)
 
   const changePage = (pageSlug) => {
     setActivePageSlug(pageSlug)
@@ -305,6 +341,7 @@ export default function TextEditorPage() {
     setActiveKey(key)
     setPageMode('textos')
     setMessage(null)
+    setPreviewError(false)
   }
 
   const updateActiveSection = (field, value) => {
@@ -314,6 +351,9 @@ export default function TextEditorPage() {
       ),
     )
     setMessage(null)
+    if (field === 'valor') {
+      setPreviewError(false)
+    }
   }
 
   const saveSection = async () => {
@@ -333,19 +373,65 @@ export default function TextEditorPage() {
     }
   }
 
-  const handleImageFile = (event) => {
-    const [file] = event.target.files
+  const handleUploadFile = async (file) => {
     if (!file) return
 
     if (!file.type.startsWith('image/')) {
-      setError('Selecciona un archivo de imagen válido.')
+      setError('Por favor selecciona un archivo de imagen válido (JPEG, PNG, WEBP, GIF, SVG).')
       return
     }
 
-    const reader = new FileReader()
-    reader.onload = () => updateActiveSection('valor', reader.result)
-    reader.onerror = () => setError('No se pudo leer la imagen seleccionada.')
-    reader.readAsDataURL(file)
+    if (file.size > 10 * 1024 * 1024) {
+      setError('El tamaño de la imagen no debe superar los 10 MB.')
+      return
+    }
+
+    setUploading(true)
+    setError('')
+    setMessage(null)
+
+    try {
+      const result = await uploadService.uploadImage(file)
+      updateActiveSection('valor', result.url)
+      setMessage(`Imagen subida con éxito: ${result.filename}`)
+    } catch (uploadError) {
+      setError(uploadError.message || 'Error al subir la imagen al servidor.')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  const handleImageFileChange = (event) => {
+    const [file] = event.target.files
+    if (file) handleUploadFile(file)
+    event.target.value = ''
+  }
+
+  const handleDragOver = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+  }
+
+  const handleDrop = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+    const [file] = e.dataTransfer.files
+    if (file) handleUploadFile(file)
+  }
+
+  const copyImageUrl = () => {
+    if (!activeSection?.valor) return
+    navigator.clipboard.writeText(activeSection.valor)
+    setCopiedUrl(true)
+    setTimeout(() => setCopiedUrl(false), 2000)
   }
 
   const signOut = () => {
@@ -743,17 +829,61 @@ export default function TextEditorPage() {
                       <IconGraduationCap className="h-3.5 w-3.5" />
                       <span>Representación Estudiantil (HCC)</span>
                     </>
-                  ) : (
+                  ) : activePageSlug === '/institucional/docentes' ? (
                     <>
                       <IconUsers className="h-3.5 w-3.5" />
                       <span>Plantel Docente y Administrativo</span>
                     </>
+                  ) : activePageSlug === '/pregrado/malla-curricular' ? (
+                    <>
+                      <IconBookOpen className="h-3.5 w-3.5" />
+                      <span>Gestión de Materias y Planes</span>
+                    </>
+                  ) : activePageSlug === '/pregrado/convalidaciones' ? (
+                    <>
+                      <IconLayers className="h-3.5 w-3.5" />
+                      <span>Gestión de Convalidaciones</span>
+                    </>
+                  ) : activePageSlug === '/pregrado/admisiones' ? (
+                    <>
+                      <IconCalendar className="h-3.5 w-3.5" />
+                      <span>Gestión de Convocatorias</span>
+                    </>
+                  ) : ['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) ? (
+                    <>
+                      <IconBookOpen className="h-3.5 w-3.5" />
+                      <span>Módulos de Postgrado</span>
+                    </>
+                  ) : (
+                    <>
+                      <IconBookOpen className="h-3.5 w-3.5" />
+                      <span>Gestión de Datos</span>
+                    </>
                   )}
                 </button>
+
+                {['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) && (
+                  <button
+                    type="button"
+                    onClick={() => setPageMode('programas')}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
+                      pageMode === 'programas'
+                        ? 'bg-umsa-blue text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <IconLayers className="h-3.5 w-3.5" />
+                    <span>Programas de Postgrado</span>
+                  </button>
+                )}
               </div>
             )}
 
-            {pageMode === 'crud' && activePageSlug === '/institucional/convenios' ? (
+            {pageMode === 'programas' ? (
+              <ProgramaCrud />
+            ) : pageMode === 'modulos' ? (
+              <ModuloCrud />
+            ) : pageMode === 'crud' && activePageSlug === '/institucional/convenios' ? (
               <>
                 <div className="mb-6 border-b border-slate-200 pb-5">
                   <h2 className="text-xl font-bold text-slate-800">Convenios Interinstitucionales</h2>
@@ -785,6 +915,14 @@ export default function TextEditorPage() {
                 </div>
                 <PlantelCrud />
               </>
+            ) : pageMode === 'crud' && activePageSlug === '/pregrado/malla-curricular' ? (
+              <MateriaPlanCrud />
+            ) : pageMode === 'crud' && activePageSlug === '/pregrado/convalidaciones' ? (
+              <ConvalidaCrud />
+            ) : pageMode === 'crud' && activePageSlug === '/pregrado/admisiones' ? (
+              <ConvocatoriaCrud />
+            ) : pageMode === 'crud' && ['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) ? (
+              <ModuloCrud />
             ) : activeSection ? (
               <>
                 {/* Section context breadcrumb and group navigation */}
@@ -880,42 +1018,157 @@ export default function TextEditorPage() {
                 </div>
 
                 {activeSection.tipo === 'imagen' ? (
-                  <div className="flex flex-1 flex-col gap-4">
-                    <label htmlFor="image-value" className="text-sm font-semibold text-slate-600">
-                      URL o contenido de la imagen
-                    </label>
-                    <input
-                      id="image-value"
-                      value={activeSection.valor}
-                      onChange={(event) => updateActiveSection('valor', event.target.value)}
-                      className="rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-umsa-blue focus:ring-2 focus:ring-sky-100"
-                      placeholder="https://..."
-                    />
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="inline-flex items-center gap-2 w-fit rounded-lg border border-dashed border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-umsa-blue hover:text-umsa-blue hover:bg-sky-50/50"
+                  <div className="flex flex-1 flex-col gap-5">
+                    {/* Upload Dropzone */}
+                    <div
+                      onDragOver={handleDragOver}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDrop}
+                      onClick={() => !uploading && fileInputRef.current?.click()}
+                      className={`relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition ${
+                        isDragging
+                          ? 'border-umsa-blue bg-sky-50/70 scale-[1.01]'
+                          : uploading
+                          ? 'border-slate-300 bg-slate-50 cursor-wait opacity-80'
+                          : 'border-slate-300 bg-slate-50/70 hover:border-umsa-blue hover:bg-sky-50/40'
+                      }`}
                     >
-                      <IconUpload className="h-4 w-4" />
-                      <span>Seleccionar imagen local</span>
-                    </button>
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageFile}
-                      className="hidden"
-                    />
-                    <div className="flex min-h-56 flex-1 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-4">
-                      {activeSection.valor ? (
-                        <img
-                          src={activeSection.valor}
-                          alt="Vista previa de la sección"
-                          className="max-h-80 max-w-full rounded object-contain shadow-xs"
-                        />
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+                        onChange={handleImageFileChange}
+                        disabled={uploading}
+                        className="hidden"
+                      />
+
+                      {uploading ? (
+                        <div className="flex flex-col items-center gap-2 py-3">
+                          <div className="h-8 w-8 animate-spin rounded-full border-3 border-umsa-blue border-t-transparent" />
+                          <p className="text-sm font-semibold text-umsa-blue">Subiendo imagen al servidor...</p>
+                          <p className="text-xs text-slate-400">Guardando en el almacenamiento persistente</p>
+                        </div>
                       ) : (
-                        <span className="text-sm text-slate-400">La vista previa aparecerá aquí</span>
+                        <div className="flex flex-col items-center gap-2 py-2">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-umsa-blue">
+                            <IconUpload className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-slate-700">
+                              <span className="text-umsa-blue underline">Haz clic para subir</span> o arrastra una imagen aquí
+                            </p>
+                            <p className="mt-1 text-xs text-slate-400">
+                              Admite JPEG, PNG, WEBP, GIF, SVG (hasta 10 MB)
+                            </p>
+                          </div>
+                        </div>
                       )}
+                    </div>
+
+                    {/* URL Input and Actions */}
+                    <div>
+                      <div className="mb-1 flex items-center justify-between">
+                        <label htmlFor="image-value" className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Ruta o URL de la imagen
+                        </label>
+                        {activeSection.valor && (
+                          <div className="flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={copyImageUrl}
+                              className="inline-flex items-center gap-1 text-xs font-semibold text-umsa-blue hover:underline"
+                            >
+                              {copiedUrl ? (
+                                <>
+                                  <IconCheck className="h-3.5 w-3.5 text-emerald-600" />
+                                  <span className="text-emerald-600">¡Copiado!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <IconCopy className="h-3.5 w-3.5" />
+                                  <span>Copiar ruta</span>
+                                </>
+                              )}
+                            </button>
+                            {activeSection.valor.startsWith('/uploads/') && (
+                              <a
+                                href={uploadService.resolveMediaUrl(activeSection.valor)}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-umsa-blue"
+                              >
+                                <IconExternalLink className="h-3.5 w-3.5" />
+                                <span>Abrir original</span>
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex gap-2">
+                        <input
+                          id="image-value"
+                          value={activeSection.valor}
+                          onChange={(event) => updateActiveSection('valor', event.target.value)}
+                          className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm font-mono outline-none focus:border-umsa-blue focus:ring-2 focus:ring-sky-100"
+                          placeholder="Ej: /uploads/images/... o https://..."
+                        />
+                        {activeSection.valor && (
+                          <button
+                            type="button"
+                            onClick={() => updateActiveSection('valor', '')}
+                            title="Quitar imagen actual"
+                            className="inline-flex items-center gap-1 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-100"
+                          >
+                            <IconTrash className="h-3.5 w-3.5" />
+                            <span>Quitar</span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Preview Area */}
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between text-xs font-semibold text-slate-500">
+                        <span>Vista previa</span>
+                        {activeSection.valor && (
+                          <span className="rounded bg-slate-100 px-2 py-0.5 font-mono text-[11px] text-slate-600">
+                            {activeSection.valor.startsWith('/uploads/') ? '📁 Archivo local en servidor' : '🌐 Enlace externo'}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex min-h-64 flex-1 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-900/5 p-4">
+                        {activeSection.valor ? (
+                          <div className="relative max-h-96 max-w-full flex flex-col items-center justify-center">
+                            {previewError ? (
+                              <div className="rounded-lg bg-amber-50 border border-amber-200 p-4 text-center text-xs text-amber-800 max-w-md">
+                                <p className="font-semibold mb-1">⚠️ No se pudo cargar la vista previa</p>
+                                <p className="font-mono text-[11px] text-amber-700/90 break-all select-all">
+                                  {uploadService.resolveMediaUrl(activeSection.valor)}
+                                </p>
+                                <p className="mt-2 text-slate-500">
+                                  Verifica que la ruta sea correcta o sube una nueva imagen desde el botón superior.
+                                </p>
+                              </div>
+                            ) : (
+                              <img
+                                key={uploadService.resolveMediaUrl(activeSection.valor)}
+                                src={uploadService.resolveMediaUrl(activeSection.valor)}
+                                alt="Vista previa de la sección"
+                                className="max-h-80 max-w-full rounded-lg object-contain shadow-md"
+                                onLoad={() => setPreviewError(false)}
+                                onError={() => setPreviewError(true)}
+                              />
+                            )}
+                          </div>
+                        ) : (
+                          <div className="flex flex-col items-center gap-1 text-slate-400">
+                            <IconImage className="h-10 w-10 stroke-1" />
+                            <span className="text-sm">No hay ninguna imagen asignada a esta sección</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ) : (

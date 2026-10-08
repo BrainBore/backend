@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { estudianteAutoridadService } from '../services/estudiante-autoridad.service'
+import { uploadService } from '../services/upload.service'
 
 const emptyForm = { nombre: '', cargo: '', imagen: '' }
 
@@ -70,7 +71,49 @@ export default function EstudianteAutoridadCrud() {
         {[["nombre", "Nombre"], ["cargo", "Cargo"], ["imagen", "Imagen"]].map(([key, label]) => (
           <label key={key} className="text-sm font-semibold text-slate-600">
             {label}
-            <input value={form[key]} onChange={(event) => setForm({ ...form, [key]: event.target.value })} required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal outline-none focus:border-umsa-blue" />
+            {key === 'imagen' ? (
+              <div className="mt-1 flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <input
+                    value={form[key]}
+                    onChange={(event) => setForm({ ...form, [key]: event.target.value })}
+                    required
+                    placeholder="/uploads/images/... o https://..."
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-mono outline-none focus:border-umsa-blue"
+                  />
+                  <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-2xs hover:border-umsa-blue hover:text-umsa-blue shrink-0">
+                    <span>Subir</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={async (event) => {
+                        const [file] = event.target.files
+                        if (!file) return
+                        try {
+                          const res = await uploadService.uploadImage(file)
+                          setForm((prev) => ({ ...prev, [key]: res.url }))
+                        } catch (err) {
+                          alert(err.message || 'Error al subir imagen')
+                        }
+                      }}
+                    />
+                  </label>
+                </div>
+                {form[key] && (
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={uploadService.resolveMediaUrl(form[key])}
+                      alt="preview"
+                      className="h-12 w-12 rounded-md object-cover border border-slate-200"
+                    />
+                    <span className="text-xs text-slate-400 font-mono truncate max-w-xs">{form[key]}</span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <input value={form[key]} onChange={(event) => setForm({ ...form, [key]: event.target.value })} required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal outline-none focus:border-umsa-blue" />
+            )}
           </label>
         ))}
         <div className="flex items-center gap-2 sm:col-span-2">

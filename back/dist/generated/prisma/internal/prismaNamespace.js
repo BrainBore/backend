@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.IncluyePosgradoScalarFieldEnum = exports.OrganizaPosgradoScalarFieldEnum = exports.ModuloScalarFieldEnum = exports.ProgramaScalarFieldEnum = exports.ConvocatoriaScalarFieldEnum = exports.ConvalidaScalarFieldEnum = exports.IncluyeScalarFieldEnum = exports.PlanEstudiosScalarFieldEnum = exports.MateriaPregradoScalarFieldEnum = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = require("@prisma/client/runtime/client");
 exports.PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
 exports.PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
@@ -33,7 +33,16 @@ exports.ModelName = {
     Administrativo: 'Administrativo',
     Auxiliar: 'Auxiliar',
     EstudianteAutoridad: 'EstudianteAutoridad',
-    Convenio: 'Convenio'
+    Convenio: 'Convenio',
+    MateriaPregrado: 'MateriaPregrado',
+    PlanEstudios: 'PlanEstudios',
+    Incluye: 'Incluye',
+    Convalida: 'Convalida',
+    Convocatoria: 'Convocatoria',
+    Programa: 'Programa',
+    Modulo: 'Modulo',
+    OrganizaPosgrado: 'OrganizaPosgrado',
+    IncluyePosgrado: 'IncluyePosgrado'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -91,6 +100,57 @@ exports.ConvenioScalarFieldEnum = {
     titulo: 'titulo',
     descripcion: 'descripcion',
     sector: 'sector'
+};
+exports.MateriaPregradoScalarFieldEnum = {
+    idMateriaAct: 'idMateriaAct',
+    siglaMateriaAct: 'siglaMateriaAct',
+    nombreMateriaAct: 'nombreMateriaAct',
+    horasMateria: 'horasMateria',
+    prerrequisitos: 'prerrequisitos',
+    semestre: 'semestre'
+};
+exports.PlanEstudiosScalarFieldEnum = {
+    idPlanEstudio: 'idPlanEstudio',
+    nombrePlan: 'nombrePlan'
+};
+exports.IncluyeScalarFieldEnum = {
+    idPlanEstudio: 'idPlanEstudio',
+    idMateriaAct: 'idMateriaAct'
+};
+exports.ConvalidaScalarFieldEnum = {
+    idMateriaAct: 'idMateriaAct',
+    idMateriaAntigua: 'idMateriaAntigua',
+    nombreMateriaAntigua: 'nombreMateriaAntigua',
+    siglaMateriaAntigua: 'siglaMateriaAntigua'
+};
+exports.ConvocatoriaScalarFieldEnum = {
+    idConvocatoria: 'idConvocatoria',
+    periodoConvocatoria: 'periodoConvocatoria',
+    descConvocatoria: 'descConvocatoria',
+    insPreu: 'insPreu',
+    insPsa: 'insPsa',
+    fechaEntregaDocs: 'fechaEntregaDocs',
+    matriculacionKardex: 'matriculacionKardex'
+};
+exports.ProgramaScalarFieldEnum = {
+    idPrograma: 'idPrograma',
+    nombre: 'nombre',
+    tipo: 'tipo',
+    costo: 'costo'
+};
+exports.ModuloScalarFieldEnum = {
+    idModulo: 'idModulo',
+    tituloModulo: 'tituloModulo',
+    numeroModulo: 'numeroModulo'
+};
+exports.OrganizaPosgradoScalarFieldEnum = {
+    idPrograma: 'idPrograma',
+    idModulo: 'idModulo'
+};
+exports.IncluyePosgradoScalarFieldEnum = {
+    idModulo: 'idModulo',
+    horasPresencial: 'horasPresencial',
+    horasInvestigacion: 'horasInvestigacion'
 };
 exports.SortOrder = {
     asc: 'asc',

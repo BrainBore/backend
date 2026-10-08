@@ -57,7 +57,16 @@ export const ModelName = {
   Administrativo: 'Administrativo',
   Auxiliar: 'Auxiliar',
   EstudianteAutoridad: 'EstudianteAutoridad',
-  Convenio: 'Convenio'
+  Convenio: 'Convenio',
+  MateriaPregrado: 'MateriaPregrado',
+  PlanEstudios: 'PlanEstudios',
+  Incluye: 'Incluye',
+  Convalida: 'Convalida',
+  Convocatoria: 'Convocatoria',
+  Programa: 'Programa',
+  Modulo: 'Modulo',
+  OrganizaPosgrado: 'OrganizaPosgrado',
+  IncluyePosgrado: 'IncluyePosgrado'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -153,6 +162,93 @@ export const ConvenioScalarFieldEnum = {
 } as const
 
 export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum]
+
+
+export const MateriaPregradoScalarFieldEnum = {
+  idMateriaAct: 'idMateriaAct',
+  siglaMateriaAct: 'siglaMateriaAct',
+  nombreMateriaAct: 'nombreMateriaAct',
+  horasMateria: 'horasMateria',
+  prerrequisitos: 'prerrequisitos',
+  semestre: 'semestre'
+} as const
+
+export type MateriaPregradoScalarFieldEnum = (typeof MateriaPregradoScalarFieldEnum)[keyof typeof MateriaPregradoScalarFieldEnum]
+
+
+export const PlanEstudiosScalarFieldEnum = {
+  idPlanEstudio: 'idPlanEstudio',
+  nombrePlan: 'nombrePlan'
+} as const
+
+export type PlanEstudiosScalarFieldEnum = (typeof PlanEstudiosScalarFieldEnum)[keyof typeof PlanEstudiosScalarFieldEnum]
+
+
+export const IncluyeScalarFieldEnum = {
+  idPlanEstudio: 'idPlanEstudio',
+  idMateriaAct: 'idMateriaAct'
+} as const
+
+export type IncluyeScalarFieldEnum = (typeof IncluyeScalarFieldEnum)[keyof typeof IncluyeScalarFieldEnum]
+
+
+export const ConvalidaScalarFieldEnum = {
+  idMateriaAct: 'idMateriaAct',
+  idMateriaAntigua: 'idMateriaAntigua',
+  nombreMateriaAntigua: 'nombreMateriaAntigua',
+  siglaMateriaAntigua: 'siglaMateriaAntigua'
+} as const
+
+export type ConvalidaScalarFieldEnum = (typeof ConvalidaScalarFieldEnum)[keyof typeof ConvalidaScalarFieldEnum]
+
+
+export const ConvocatoriaScalarFieldEnum = {
+  idConvocatoria: 'idConvocatoria',
+  periodoConvocatoria: 'periodoConvocatoria',
+  descConvocatoria: 'descConvocatoria',
+  insPreu: 'insPreu',
+  insPsa: 'insPsa',
+  fechaEntregaDocs: 'fechaEntregaDocs',
+  matriculacionKardex: 'matriculacionKardex'
+} as const
+
+export type ConvocatoriaScalarFieldEnum = (typeof ConvocatoriaScalarFieldEnum)[keyof typeof ConvocatoriaScalarFieldEnum]
+
+
+export const ProgramaScalarFieldEnum = {
+  idPrograma: 'idPrograma',
+  nombre: 'nombre',
+  tipo: 'tipo',
+  costo: 'costo'
+} as const
+
+export type ProgramaScalarFieldEnum = (typeof ProgramaScalarFieldEnum)[keyof typeof ProgramaScalarFieldEnum]
+
+
+export const ModuloScalarFieldEnum = {
+  idModulo: 'idModulo',
+  tituloModulo: 'tituloModulo',
+  numeroModulo: 'numeroModulo'
+} as const
+
+export type ModuloScalarFieldEnum = (typeof ModuloScalarFieldEnum)[keyof typeof ModuloScalarFieldEnum]
+
+
+export const OrganizaPosgradoScalarFieldEnum = {
+  idPrograma: 'idPrograma',
+  idModulo: 'idModulo'
+} as const
+
+export type OrganizaPosgradoScalarFieldEnum = (typeof OrganizaPosgradoScalarFieldEnum)[keyof typeof OrganizaPosgradoScalarFieldEnum]
+
+
+export const IncluyePosgradoScalarFieldEnum = {
+  idModulo: 'idModulo',
+  horasPresencial: 'horasPresencial',
+  horasInvestigacion: 'horasInvestigacion'
+} as const
+
+export type IncluyePosgradoScalarFieldEnum = (typeof IncluyePosgradoScalarFieldEnum)[keyof typeof IncluyePosgradoScalarFieldEnum]
 
 
 export const SortOrder = {

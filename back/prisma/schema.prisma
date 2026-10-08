@@ -75,4 +75,102 @@ model Convenio {
   sector      String @db.VarChar(255)
 
   @@map("convenio")
-}
+}
+
+model MateriaPregrado {
+  idMateriaAct     Int      @id @default(autoincrement()) @map("Id_materia_act")
+  siglaMateriaAct  String   @map("sigla_materia_act") @db.VarChar(255)
+  nombreMateriaAct String   @map("nombre_materia_act") @db.VarChar(255)
+  horasMateria     Int      @map("horas_materia")
+  prerrequisitos   String   @map("prerrequisitos") @db.VarChar(500)
+  semestre         Int      @map("semestre")
+
+  incluye          Incluye[]
+
+  @@map("materia_pregrado")
+}
+
+model PlanEstudios {
+  idPlanEstudio Int       @id @default(autoincrement()) @map("Id_plan_estudio")
+  nombrePlan    String    @map("nombre_plan") @db.VarChar(255)
+
+  incluye       Incluye[]
+
+  @@map("plan_estudios")
+}
+
+model Incluye {
+  idPlanEstudio Int             @map("Id_plan_estudio")
+  idMateriaAct  Int             @map("Id_materia_act")
+
+  planEstudio   PlanEstudios    @relation(fields: [idPlanEstudio], references: [idPlanEstudio], onDelete: Cascade)
+  materia       MateriaPregrado @relation(fields: [idMateriaAct], references: [idMateriaAct], onDelete: Cascade)
+
+  @@id([idPlanEstudio, idMateriaAct])
+  @@map("incluye")
+}
+
+model Convalida {
+  idMateriaAct         Int    @id @default(autoincrement()) @map("Id_materia_act")
+  idMateriaAntigua     Int?   @map("Id_materia_antigua")
+  nombreMateriaAntigua String @map("nombre_materia_antigua") @db.VarChar(255)
+  siglaMateriaAntigua  String @map("sigla_materia_antigua") @db.VarChar(255)
+
+  @@map("convalida")
+}
+
+model Convocatoria {
+  idConvocatoria      Int      @id @default(autoincrement()) @map("Id_convocatoria")
+  periodoConvocatoria String   @map("periodo_convocatoria") @db.VarChar(255)
+  descConvocatoria    String   @map("desc_convocatoria") @db.Text
+  insPreu             String   @map("ins_preu") @db.VarChar(255)
+  insPsa              String   @map("ins_psa") @db.VarChar(255)
+  fechaEntregaDocs    DateTime @map("fecha_entrega_docs") @db.Date
+  matriculacionKardex String   @map("matriculacion_kardex") @db.VarChar(255)
+
+  @@map("convocatoria")
+}
+
+model Programa {
+  idPrograma Int                @id @default(autoincrement()) @map("id_programa")
+  nombre     String             @map("nombre") @db.VarChar(255)
+  tipo       String             @map("tipo") @db.VarChar(100)
+  costo      String             @map("costo") @db.VarChar(100)
+
+  organiza   OrganizaPosgrado[]
+
+  @@map("programa")
+}
+
+model Modulo {
+  idModulo     Int                @id @default(autoincrement()) @map("id_modulo")
+  tituloModulo String             @map("titulo_modulo") @db.VarChar(255)
+  numeroModulo String             @map("numero_modulo") @db.VarChar(50)
+
+  organiza     OrganizaPosgrado[]
+  incluye      IncluyePosgrado?
+
+  @@map("modulo")
+}
+
+model OrganizaPosgrado {
+  idPrograma Int      @map("id_programa")
+  idModulo   Int      @map("id_modulo")
+
+  programa   Programa @relation(fields: [idPrograma], references: [idPrograma], onDelete: Cascade)
+  modulo     Modulo   @relation(fields: [idModulo], references: [idModulo], onDelete: Cascade)
+
+  @@id([idPrograma, idModulo])
+  @@map("organiza_posgrado")
+}
+
+model IncluyePosgrado {
+  idModulo           Int    @id @map("id_modulo")
+  horasPresencial    String @map("horas_presencial") @db.VarChar(100)
+  horasInvestigacion String @map("horas_investigacion") @db.VarChar(100)
+
+  modulo             Modulo @relation(fields: [idModulo], references: [idModulo], onDelete: Cascade)
+
+  @@map("incluye_posgrado")
+}
+

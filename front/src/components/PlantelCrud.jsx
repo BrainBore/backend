@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { plantelService } from '../services/plantel.service'
+import { uploadService } from '../services/upload.service'
 
 const plantelTabs = [
   { key: 'docentes', label: 'Docentes', fields: [['nombre', 'Nombre'], ['gradoAcademico', 'Grado académico', 'select', ['Lic.', 'M. Sc.', 'Ph. D.']], ['tipo', 'Tipo', 'select', ['Titular', 'Interino']], ['resumenCv', 'Resumen CV', 'textarea', 500], ['correoInstitucional', 'Correo institucional'], ['cargoAutoridad', 'Cargo de autoridad', 'selectOptional', ['Director(a) de Carrera', 'Director(a) Academico(a)', 'Estamendo Docente']], ['imagen', 'Imagen']] },
@@ -97,6 +98,46 @@ export default function PlantelCrud() {
               </select>
             ) : inputType === 'textarea' ? (
               <><textarea value={form[key] ?? ''} maxLength={options} onChange={(event) => updateField(key, event.target.value)} required className="mt-1 min-h-24 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal outline-none focus:border-umsa-blue" /><span className="block text-right text-xs font-normal text-slate-400">{(form[key] ?? '').length}/{options}</span></>
+            ) : key === 'imagen' || key === 'foto' ? (
+              <div className="mt-1 flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <input
+                    value={form[key] ?? ''}
+                    onChange={(event) => updateField(key, event.target.value)}
+                    required={inputType !== 'optional'}
+                    placeholder="/uploads/images/... o https://..."
+                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-mono outline-none focus:border-umsa-blue"
+                  />
+                  <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-2xs hover:border-umsa-blue hover:text-umsa-blue shrink-0">
+                    <span>Subir</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={async (event) => {
+                        const [file] = event.target.files
+                        if (!file) return
+                        try {
+                          const res = await uploadService.uploadImage(file)
+                          updateField(key, res.url)
+                        } catch (err) {
+                          alert(err.message || 'Error al subir imagen')
+                        }
+                      }}
+                    />
+                  </label>
+                </div>
+                {form[key] && (
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={uploadService.resolveMediaUrl(form[key])}
+                      alt="preview"
+                      className="h-12 w-12 rounded-md object-cover border border-slate-200"
+                    />
+                    <span className="text-xs text-slate-400 font-mono truncate max-w-xs">{form[key]}</span>
+                  </div>
+                )}
+              </div>
             ) : (
               <input value={form[key] ?? ''} onChange={(event) => updateField(key, event.target.value)} required={inputType !== 'optional'} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal outline-none focus:border-umsa-blue" />
             )}

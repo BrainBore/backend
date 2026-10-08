@@ -74,3 +74,48 @@ export type EstudianteAutoridad = Prisma.EstudianteAutoridadModel
  * 
  */
 export type Convenio = Prisma.ConvenioModel
+/**
+ * Model MateriaPregrado
+ * 
+ */
+export type MateriaPregrado = Prisma.MateriaPregradoModel
+/**
+ * Model PlanEstudios
+ * 
+ */
+export type PlanEstudios = Prisma.PlanEstudiosModel
+/**
+ * Model Incluye
+ * 
+ */
+export type Incluye = Prisma.IncluyeModel
+/**
+ * Model Convalida
+ * 
+ */
+export type Convalida = Prisma.ConvalidaModel
+/**
+ * Model Convocatoria
+ * 
+ */
+export type Convocatoria = Prisma.ConvocatoriaModel
+/**
+ * Model Programa
+ * 
+ */
+export type Programa = Prisma.ProgramaModel
+/**
+ * Model Modulo
+ * 
+ */
+export type Modulo = Prisma.ModuloModel
+/**
+ * Model OrganizaPosgrado
+ * 
+ */
+export type OrganizaPosgrado = Prisma.OrganizaPosgradoModel
+/**
+ * Model IncluyePosgrado
+ * 
+ */
+export type IncluyePosgrado = Prisma.IncluyePosgradoModel

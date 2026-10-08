@@ -18,6 +18,15 @@ export declare const ModelName: {
     readonly Auxiliar: "Auxiliar";
     readonly EstudianteAutoridad: "EstudianteAutoridad";
     readonly Convenio: "Convenio";
+    readonly MateriaPregrado: "MateriaPregrado";
+    readonly PlanEstudios: "PlanEstudios";
+    readonly Incluye: "Incluye";
+    readonly Convalida: "Convalida";
+    readonly Convocatoria: "Convocatoria";
+    readonly Programa: "Programa";
+    readonly Modulo: "Modulo";
+    readonly OrganizaPosgrado: "OrganizaPosgrado";
+    readonly IncluyePosgrado: "IncluyePosgrado";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -85,6 +94,66 @@ export declare const ConvenioScalarFieldEnum: {
     readonly sector: "sector";
 };
 export type ConvenioScalarFieldEnum = (typeof ConvenioScalarFieldEnum)[keyof typeof ConvenioScalarFieldEnum];
+export declare const MateriaPregradoScalarFieldEnum: {
+    readonly idMateriaAct: "idMateriaAct";
+    readonly siglaMateriaAct: "siglaMateriaAct";
+    readonly nombreMateriaAct: "nombreMateriaAct";
+    readonly horasMateria: "horasMateria";
+    readonly prerrequisitos: "prerrequisitos";
+    readonly semestre: "semestre";
+};
+export type MateriaPregradoScalarFieldEnum = (typeof MateriaPregradoScalarFieldEnum)[keyof typeof MateriaPregradoScalarFieldEnum];
+export declare const PlanEstudiosScalarFieldEnum: {
+    readonly idPlanEstudio: "idPlanEstudio";
+    readonly nombrePlan: "nombrePlan";
+};
+export type PlanEstudiosScalarFieldEnum = (typeof PlanEstudiosScalarFieldEnum)[keyof typeof PlanEstudiosScalarFieldEnum];
+export declare const IncluyeScalarFieldEnum: {
+    readonly idPlanEstudio: "idPlanEstudio";
+    readonly idMateriaAct: "idMateriaAct";
+};
+export type IncluyeScalarFieldEnum = (typeof IncluyeScalarFieldEnum)[keyof typeof IncluyeScalarFieldEnum];
+export declare const ConvalidaScalarFieldEnum: {
+    readonly idMateriaAct: "idMateriaAct";
+    readonly idMateriaAntigua: "idMateriaAntigua";
+    readonly nombreMateriaAntigua: "nombreMateriaAntigua";
+    readonly siglaMateriaAntigua: "siglaMateriaAntigua";
+};
+export type ConvalidaScalarFieldEnum = (typeof ConvalidaScalarFieldEnum)[keyof typeof ConvalidaScalarFieldEnum];
+export declare const ConvocatoriaScalarFieldEnum: {
+    readonly idConvocatoria: "idConvocatoria";
+    readonly periodoConvocatoria: "periodoConvocatoria";
+    readonly descConvocatoria: "descConvocatoria";
+    readonly insPreu: "insPreu";
+    readonly insPsa: "insPsa";
+    readonly fechaEntregaDocs: "fechaEntregaDocs";
+    readonly matriculacionKardex: "matriculacionKardex";
+};
+export type ConvocatoriaScalarFieldEnum = (typeof ConvocatoriaScalarFieldEnum)[keyof typeof ConvocatoriaScalarFieldEnum];
+export declare const ProgramaScalarFieldEnum: {
+    readonly idPrograma: "idPrograma";
+    readonly nombre: "nombre";
+    readonly tipo: "tipo";
+    readonly costo: "costo";
+};
+export type ProgramaScalarFieldEnum = (typeof ProgramaScalarFieldEnum)[keyof typeof ProgramaScalarFieldEnum];
+export declare const ModuloScalarFieldEnum: {
+    readonly idModulo: "idModulo";
+    readonly tituloModulo: "tituloModulo";
+    readonly numeroModulo: "numeroModulo";
+};
+export type ModuloScalarFieldEnum = (typeof ModuloScalarFieldEnum)[keyof typeof ModuloScalarFieldEnum];
+export declare const OrganizaPosgradoScalarFieldEnum: {
+    readonly idPrograma: "idPrograma";
+    readonly idModulo: "idModulo";
+};
+export type OrganizaPosgradoScalarFieldEnum = (typeof OrganizaPosgradoScalarFieldEnum)[keyof typeof OrganizaPosgradoScalarFieldEnum];
+export declare const IncluyePosgradoScalarFieldEnum: {
+    readonly idModulo: "idModulo";
+    readonly horasPresencial: "horasPresencial";
+    readonly horasInvestigacion: "horasInvestigacion";
+};
+export type IncluyePosgradoScalarFieldEnum = (typeof IncluyePosgradoScalarFieldEnum)[keyof typeof IncluyePosgradoScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

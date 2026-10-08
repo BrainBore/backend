@@ -51,5 +51,32 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get convenio(): Prisma.ConvenioDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get materiaPregrado(): Prisma.MateriaPregradoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get planEstudios(): Prisma.PlanEstudiosDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get incluye(): Prisma.IncluyeDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get convalida(): Prisma.ConvalidaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get convocatoria(): Prisma.ConvocatoriaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get programa(): Prisma.ProgramaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get modulo(): Prisma.ModuloDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get organizaPosgrado(): Prisma.OrganizaPosgradoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get incluyePosgrado(): Prisma.IncluyePosgradoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
