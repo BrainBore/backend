@@ -97,3 +97,63 @@ export type OrganizaPosgrado = Prisma.OrganizaPosgradoModel
  * 
  */
 export type IncluyePosgrado = Prisma.IncluyePosgradoModel
+/**
+ * Model DirectivoEstudiante
+ * 
+ */
+export type DirectivoEstudiante = Prisma.DirectivoEstudianteModel
+/**
+ * Model ConvocatoriaAuxiliatura
+ * 
+ */
+export type ConvocatoriaAuxiliatura = Prisma.ConvocatoriaAuxiliaturaModel
+/**
+ * Model Pasantia
+ * 
+ */
+export type Pasantia = Prisma.PasantiaModel
+/**
+ * Model PublicacionesEstudiantiles
+ * 
+ */
+export type PublicacionesEstudiantiles = Prisma.PublicacionesEstudiantilesModel
+/**
+ * Model MatrizCientifica
+ * 
+ */
+export type MatrizCientifica = Prisma.MatrizCientificaModel
+/**
+ * Model Autor
+ * 
+ */
+export type Autor = Prisma.AutorModel
+/**
+ * Model Libro
+ * 
+ */
+export type Libro = Prisma.LibroModel
+/**
+ * Model Revista
+ * 
+ */
+export type Revista = Prisma.RevistaModel
+/**
+ * Model DocumentoDigital
+ * 
+ */
+export type DocumentoDigital = Prisma.DocumentoDigitalModel
+/**
+ * Model Tesis
+ * 
+ */
+export type Tesis = Prisma.TesisModel
+/**
+ * Model BancoDatos
+ * 
+ */
+export type BancoDatos = Prisma.BancoDatosModel
+/**
+ * Model DatosArchivo
+ * 
+ */
+export type DatosArchivo = Prisma.DatosArchivoModel

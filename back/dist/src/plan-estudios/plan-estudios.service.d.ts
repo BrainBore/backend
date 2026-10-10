@@ -16,8 +16,8 @@ export declare class PlanEstudiosService {
                 semestre: number;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idPlanEstudio: number;
@@ -34,8 +34,8 @@ export declare class PlanEstudiosService {
                 semestre: number;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idPlanEstudio: number;

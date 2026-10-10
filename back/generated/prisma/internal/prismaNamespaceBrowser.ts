@@ -66,7 +66,19 @@ export const ModelName = {
   Programa: 'Programa',
   Modulo: 'Modulo',
   OrganizaPosgrado: 'OrganizaPosgrado',
-  IncluyePosgrado: 'IncluyePosgrado'
+  IncluyePosgrado: 'IncluyePosgrado',
+  DirectivoEstudiante: 'DirectivoEstudiante',
+  ConvocatoriaAuxiliatura: 'ConvocatoriaAuxiliatura',
+  Pasantia: 'Pasantia',
+  PublicacionesEstudiantiles: 'PublicacionesEstudiantiles',
+  MatrizCientifica: 'MatrizCientifica',
+  Autor: 'Autor',
+  Libro: 'Libro',
+  Revista: 'Revista',
+  DocumentoDigital: 'DocumentoDigital',
+  Tesis: 'Tesis',
+  BancoDatos: 'BancoDatos',
+  DatosArchivo: 'DatosArchivo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -249,6 +261,154 @@ export const IncluyePosgradoScalarFieldEnum = {
 } as const
 
 export type IncluyePosgradoScalarFieldEnum = (typeof IncluyePosgradoScalarFieldEnum)[keyof typeof IncluyePosgradoScalarFieldEnum]
+
+
+export const DirectivoEstudianteScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  cargo: 'cargo',
+  area: 'area'
+} as const
+
+export type DirectivoEstudianteScalarFieldEnum = (typeof DirectivoEstudianteScalarFieldEnum)[keyof typeof DirectivoEstudianteScalarFieldEnum]
+
+
+export const ConvocatoriaAuxiliaturaScalarFieldEnum = {
+  id: 'id',
+  materia: 'materia',
+  tipo: 'tipo',
+  descripcion: 'descripcion',
+  fechaPublicacion: 'fechaPublicacion',
+  fechaCierre: 'fechaCierre',
+  plazas: 'plazas',
+  estado: 'estado'
+} as const
+
+export type ConvocatoriaAuxiliaturaScalarFieldEnum = (typeof ConvocatoriaAuxiliaturaScalarFieldEnum)[keyof typeof ConvocatoriaAuxiliaturaScalarFieldEnum]
+
+
+export const PasantiaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  tipo: 'tipo',
+  descripcion: 'descripcion',
+  area: 'area',
+  empresa: 'empresa',
+  fechaCierre: 'fechaCierre',
+  requisitos: 'requisitos'
+} as const
+
+export type PasantiaScalarFieldEnum = (typeof PasantiaScalarFieldEnum)[keyof typeof PasantiaScalarFieldEnum]
+
+
+export const PublicacionesEstudiantilesScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  anio: 'anio',
+  autor: 'autor',
+  area: 'area'
+} as const
+
+export type PublicacionesEstudiantilesScalarFieldEnum = (typeof PublicacionesEstudiantilesScalarFieldEnum)[keyof typeof PublicacionesEstudiantilesScalarFieldEnum]
+
+
+export const MatrizCientificaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  autor: 'autor'
+} as const
+
+export type MatrizCientificaScalarFieldEnum = (typeof MatrizCientificaScalarFieldEnum)[keyof typeof MatrizCientificaScalarFieldEnum]
+
+
+export const AutorScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  area: 'area',
+  tipo: 'tipo',
+  ubicacion: 'ubicacion'
+} as const
+
+export type AutorScalarFieldEnum = (typeof AutorScalarFieldEnum)[keyof typeof AutorScalarFieldEnum]
+
+
+export const LibroScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  editor: 'editor',
+  descripcionFisica: 'descripcionFisica',
+  codigoIsbn: 'codigoIsbn',
+  calificacionDewey: 'calificacionDewey',
+  temas: 'temas',
+  link: 'link',
+  idAutor: 'idAutor'
+} as const
+
+export type LibroScalarFieldEnum = (typeof LibroScalarFieldEnum)[keyof typeof LibroScalarFieldEnum]
+
+
+export const RevistaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  tipo: 'tipo',
+  publicacion: 'publicacion',
+  autor: 'autor',
+  descripcion: 'descripcion',
+  link: 'link'
+} as const
+
+export type RevistaScalarFieldEnum = (typeof RevistaScalarFieldEnum)[keyof typeof RevistaScalarFieldEnum]
+
+
+export const DocumentoDigitalScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  tipo: 'tipo',
+  peso: 'peso',
+  fechaActualizacion: 'fechaActualizacion',
+  linkDescarga: 'linkDescarga'
+} as const
+
+export type DocumentoDigitalScalarFieldEnum = (typeof DocumentoDigitalScalarFieldEnum)[keyof typeof DocumentoDigitalScalarFieldEnum]
+
+
+export const TesisScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  tipo: 'tipo',
+  area: 'area',
+  tutor: 'tutor',
+  investigador: 'investigador',
+  resumen: 'resumen',
+  link: 'link'
+} as const
+
+export type TesisScalarFieldEnum = (typeof TesisScalarFieldEnum)[keyof typeof TesisScalarFieldEnum]
+
+
+export const BancoDatosScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  tipo: 'tipo',
+  fuente: 'fuente',
+  anio: 'anio',
+  resumen: 'resumen'
+} as const
+
+export type BancoDatosScalarFieldEnum = (typeof BancoDatosScalarFieldEnum)[keyof typeof BancoDatosScalarFieldEnum]
+
+
+export const DatosArchivoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  formato: 'formato',
+  peso: 'peso',
+  linkDescarga: 'linkDescarga',
+  idBancoDatos: 'idBancoDatos'
+} as const
+
+export type DatosArchivoScalarFieldEnum = (typeof DatosArchivoScalarFieldEnum)[keyof typeof DatosArchivoScalarFieldEnum]
 
 
 export const SortOrder = {

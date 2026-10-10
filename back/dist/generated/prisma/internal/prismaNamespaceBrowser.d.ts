@@ -27,6 +27,18 @@ export declare const ModelName: {
     readonly Modulo: "Modulo";
     readonly OrganizaPosgrado: "OrganizaPosgrado";
     readonly IncluyePosgrado: "IncluyePosgrado";
+    readonly DirectivoEstudiante: "DirectivoEstudiante";
+    readonly ConvocatoriaAuxiliatura: "ConvocatoriaAuxiliatura";
+    readonly Pasantia: "Pasantia";
+    readonly PublicacionesEstudiantiles: "PublicacionesEstudiantiles";
+    readonly MatrizCientifica: "MatrizCientifica";
+    readonly Autor: "Autor";
+    readonly Libro: "Libro";
+    readonly Revista: "Revista";
+    readonly DocumentoDigital: "DocumentoDigital";
+    readonly Tesis: "Tesis";
+    readonly BancoDatos: "BancoDatos";
+    readonly DatosArchivo: "DatosArchivo";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -154,6 +166,118 @@ export declare const IncluyePosgradoScalarFieldEnum: {
     readonly horasInvestigacion: "horasInvestigacion";
 };
 export type IncluyePosgradoScalarFieldEnum = (typeof IncluyePosgradoScalarFieldEnum)[keyof typeof IncluyePosgradoScalarFieldEnum];
+export declare const DirectivoEstudianteScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly cargo: "cargo";
+    readonly area: "area";
+};
+export type DirectivoEstudianteScalarFieldEnum = (typeof DirectivoEstudianteScalarFieldEnum)[keyof typeof DirectivoEstudianteScalarFieldEnum];
+export declare const ConvocatoriaAuxiliaturaScalarFieldEnum: {
+    readonly id: "id";
+    readonly materia: "materia";
+    readonly tipo: "tipo";
+    readonly descripcion: "descripcion";
+    readonly fechaPublicacion: "fechaPublicacion";
+    readonly fechaCierre: "fechaCierre";
+    readonly plazas: "plazas";
+    readonly estado: "estado";
+};
+export type ConvocatoriaAuxiliaturaScalarFieldEnum = (typeof ConvocatoriaAuxiliaturaScalarFieldEnum)[keyof typeof ConvocatoriaAuxiliaturaScalarFieldEnum];
+export declare const PasantiaScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly tipo: "tipo";
+    readonly descripcion: "descripcion";
+    readonly area: "area";
+    readonly empresa: "empresa";
+    readonly fechaCierre: "fechaCierre";
+    readonly requisitos: "requisitos";
+};
+export type PasantiaScalarFieldEnum = (typeof PasantiaScalarFieldEnum)[keyof typeof PasantiaScalarFieldEnum];
+export declare const PublicacionesEstudiantilesScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly anio: "anio";
+    readonly autor: "autor";
+    readonly area: "area";
+};
+export type PublicacionesEstudiantilesScalarFieldEnum = (typeof PublicacionesEstudiantilesScalarFieldEnum)[keyof typeof PublicacionesEstudiantilesScalarFieldEnum];
+export declare const MatrizCientificaScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly descripcion: "descripcion";
+    readonly autor: "autor";
+};
+export type MatrizCientificaScalarFieldEnum = (typeof MatrizCientificaScalarFieldEnum)[keyof typeof MatrizCientificaScalarFieldEnum];
+export declare const AutorScalarFieldEnum: {
+    readonly id: "id";
+    readonly nombre: "nombre";
+    readonly area: "area";
+    readonly tipo: "tipo";
+    readonly ubicacion: "ubicacion";
+};
+export type AutorScalarFieldEnum = (typeof AutorScalarFieldEnum)[keyof typeof AutorScalarFieldEnum];
+export declare const LibroScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly editor: "editor";
+    readonly descripcionFisica: "descripcionFisica";
+    readonly codigoIsbn: "codigoIsbn";
+    readonly calificacionDewey: "calificacionDewey";
+    readonly temas: "temas";
+    readonly link: "link";
+    readonly idAutor: "idAutor";
+};
+export type LibroScalarFieldEnum = (typeof LibroScalarFieldEnum)[keyof typeof LibroScalarFieldEnum];
+export declare const RevistaScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly tipo: "tipo";
+    readonly publicacion: "publicacion";
+    readonly autor: "autor";
+    readonly descripcion: "descripcion";
+    readonly link: "link";
+};
+export type RevistaScalarFieldEnum = (typeof RevistaScalarFieldEnum)[keyof typeof RevistaScalarFieldEnum];
+export declare const DocumentoDigitalScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly tipo: "tipo";
+    readonly peso: "peso";
+    readonly fechaActualizacion: "fechaActualizacion";
+    readonly linkDescarga: "linkDescarga";
+};
+export type DocumentoDigitalScalarFieldEnum = (typeof DocumentoDigitalScalarFieldEnum)[keyof typeof DocumentoDigitalScalarFieldEnum];
+export declare const TesisScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly tipo: "tipo";
+    readonly area: "area";
+    readonly tutor: "tutor";
+    readonly investigador: "investigador";
+    readonly resumen: "resumen";
+    readonly link: "link";
+};
+export type TesisScalarFieldEnum = (typeof TesisScalarFieldEnum)[keyof typeof TesisScalarFieldEnum];
+export declare const BancoDatosScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly tipo: "tipo";
+    readonly fuente: "fuente";
+    readonly anio: "anio";
+    readonly resumen: "resumen";
+};
+export type BancoDatosScalarFieldEnum = (typeof BancoDatosScalarFieldEnum)[keyof typeof BancoDatosScalarFieldEnum];
+export declare const DatosArchivoScalarFieldEnum: {
+    readonly id: "id";
+    readonly titulo: "titulo";
+    readonly formato: "formato";
+    readonly peso: "peso";
+    readonly linkDescarga: "linkDescarga";
+    readonly idBancoDatos: "idBancoDatos";
+};
+export type DatosArchivoScalarFieldEnum = (typeof DatosArchivoScalarFieldEnum)[keyof typeof DatosArchivoScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

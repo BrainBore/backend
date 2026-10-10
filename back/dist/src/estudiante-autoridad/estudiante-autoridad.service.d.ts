@@ -5,26 +5,26 @@ export declare class EstudianteAutoridadService {
     findAll(): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<{
         id: number;
         nombre: string;
-        imagen: string;
         cargo: string;
+        imagen: string;
     }[]>;
     create(data: Record<string, string>): Promise<{
         id: number;
         nombre: string;
-        imagen: string;
         cargo: string;
+        imagen: string;
     }>;
     update(id: number, data: Record<string, string>): Promise<{
         id: number;
         nombre: string;
-        imagen: string;
         cargo: string;
+        imagen: string;
     }>;
     remove(id: number): Promise<{
         id: number;
         nombre: string;
-        imagen: string;
         cargo: string;
+        imagen: string;
     }>;
     private ensureExists;
     private executeWrite;

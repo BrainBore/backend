@@ -11,6 +11,18 @@ import ConvalidaCrud from '../components/ConvalidaCrud'
 import ConvocatoriaCrud from '../components/ConvocatoriaCrud'
 import ProgramaCrud from '../components/ProgramaCrud'
 import ModuloCrud from '../components/ModuloCrud'
+import DirectivoEstudianteCrud from '../components/DirectivoEstudianteCrud'
+import ConvocatoriaAuxiliaturaCrud from '../components/ConvocatoriaAuxiliaturaCrud'
+import PasantiaCrud from '../components/PasantiaCrud'
+import PublicacionesEstudiantilesCrud from '../components/PublicacionesEstudiantilesCrud'
+import MatrizCientificaCrud from '../components/MatrizCientificaCrud'
+import AutorCrud from '../components/AutorCrud'
+import LibroCrud from '../components/LibroCrud'
+import RevistaCrud from '../components/RevistaCrud'
+import DocumentoDigitalCrud from '../components/DocumentoDigitalCrud'
+import TesisCrud from '../components/TesisCrud'
+import BancoDatosCrud from '../components/BancoDatosCrud'
+import DatosArchivoCrud from '../components/DatosArchivoCrud'
 import {
   IconSearch,
   IconFileText,
@@ -107,36 +119,98 @@ const pageTabs = pageGroups.flatMap((group) => group.items)
 
 const KNOWN_GROUP_LABELS = {
   acreditacion: 'Acreditación',
-  hito: 'Hitos',
+  hito: 'Hitos Históricos',
   ieta: 'IETA',
   inicio: 'Inicio',
   mision: 'Misión',
   vision: 'Visión',
   objetivo: 'Objetivos',
   valor: 'Valores',
-  chip: 'Chips informativos',
-  credencial: 'Credenciales',
-  cta: 'Llamado a la acción (CTA)',
-  impacto: 'Impacto',
+  chip: 'Chips Informativos',
+  credencial: 'Credenciales y Acreditaciones',
+  cta: 'Llamado a la Acción (CTA)',
+  impacto: 'Impacto Institucional',
   hero: 'Portada (Hero)',
   contacto: 'Contacto',
-  perfil: 'Perfil',
+  perfil: 'Perfil Profesional',
   admision: 'Admisiones',
+  admisiones: 'Admisiones',
   requisito: 'Requisitos',
-  malla: 'Malla curricular',
+  requisitos: 'Requisitos',
+  malla: 'Malla Curricular',
   convenio: 'Convenios',
   reglamento: 'Reglamentos',
   tramite: 'Trámites',
+  tramites: 'Trámites',
   pasantia: 'Pasantías',
-  revista: 'Revistas',
+  pasantias: 'Pasantías',
+  revista: 'Revistas y Publicaciones',
   biblioteca: 'Biblioteca',
   aptitud: 'Aptitudes',
-  competencias: 'Competencias',
+  competencias: 'Competencias de Grado',
   salidas: 'Salidas Laborales',
   campo: 'Campo Ocupacional',
   convalidacion: 'Convalidaciones',
   calendario: 'Calendario Académico',
   graduacion: 'Modalidades de Graduación',
+  auxiliatura: 'Auxiliaturas',
+  sociedad: 'Sociedad Científica',
+  directiva: 'Directiva',
+  cee: 'Centro de Estudiantes',
+  ciclos: 'Ciclos Formativos',
+  electivas: 'Materias Electivas',
+  electiva: 'Seminarios Electivos',
+  areas: 'Áreas de Especialidad',
+  leyenda: 'Leyenda de Áreas',
+  mesa: 'Mesa de Exámenes',
+  regular: 'Semestre Regular',
+  comunicado: 'Comunicados Oficiales',
+  descarga: 'Descargas y Resoluciones',
+  nota: 'Notas y Disposiciones',
+  especial: 'Admisiones Especiales',
+  cronograma: 'Cronograma y Gestiones',
+  intro: 'Introducción',
+  pasos: 'Pasos del Proceso',
+  procedimiento: 'Procedimientos',
+  taller: 'Taller de Titulación',
+  modalidad: 'Modalidades de Titulación',
+  modalidades: 'Modalidades de Práctica',
+  excelencia: 'Graduación por Excelencia',
+  curriculum: 'Plan Modular y Módulos',
+  inversion: 'Inversión y Cuotas',
+  oferta: 'Oferta Académica',
+  ofertas: 'Bolsa de Plazas Activas',
+  recursos: 'Recursos y Guías',
+  documentos: 'Documentos Oficiales',
+  sistema: 'Sistemas de Seguimiento',
+  stats: 'Estadísticas y Métricas',
+  servicios: 'Servicios Estudiantiles',
+  estructura: 'Estructura Democrática',
+  liderazgo: 'Representantes y Liderazgo',
+  canal: 'Canales de Comunicación',
+  footer: 'Pie de Página',
+  guia: 'Guía de Postulación',
+  alerta: 'Avisos y Comunicados',
+  lineas: 'Líneas de Investigación',
+  nodo: 'Nodos de Estudio',
+  beneficios: 'Beneficios para Miembros',
+  testimonio: 'Testimonios',
+  catalogo: 'Catálogo de Libros',
+  autores: 'Autores Destacados',
+  varianza: 'Revista Varianza',
+  directrices: 'Directrices para Autores',
+  archivero: 'Archivero de Documentos',
+  kardex: 'Formatos Kardex',
+  sello: 'Legalizaciones y Sello',
+  repositorio: 'Repositorio de Tesis',
+  banco: 'Banco de Datos Estadísticos',
+  archivos: 'Archivos y Descargas de Datos',
+  descargas: 'Descarga de Datasets',
+  biblio: 'Biblioteca',
+  autor: 'Autores',
+  libro: 'Libros',
+  tesis: 'Tesis de Grado',
+  datos: 'Banco de Datos',
 }
 
 function formatGroupLabel(groupKey) {
@@ -147,22 +221,49 @@ function formatGroupLabel(groupKey) {
   return groupKey.charAt(0).toUpperCase() + groupKey.slice(1)
 }
 
+function normalizeRawGroup(g) {
+  if (g === 'serv') return 'servicios'
+  if (g === 'mod') return 'modalidades'
+  if (g === 'req') return 'requisitos'
+  if (g === 'ben') return 'beneficios'
+  if (g === 'paso') return 'pasos'
+  if (g === 'linea') return 'lineas'
+  if (g === 'tramite') return 'tramites'
+  if (g === 'item') return 'tramites'
+  if (g === 'rev') return 'revista'
+  if (g === 'repo') return 'revista'
+  if (g === 'doc') return 'documentos'
+  if (g === 'proceso') return 'pasos'
+  return g
+}
+
 function buildSectionGroups(pageSections) {
   if (!pageSections || pageSections.length === 0) return []
 
   const keys = pageSections.map((s) => s.claveCampo)
-  const prefixCounts = {}
+  const p2Counts = {}
+  const p1Counts = {}
+
   keys.forEach((key) => {
-    const p = key.split('_')[0]
-    if (p) prefixCounts[p] = (prefixCounts[p] || 0) + 1
+    const parts = key.split('_')
+    if (parts.length >= 2) {
+      const p2 = parts[0] + '_' + parts[1]
+      p2Counts[p2] = (p2Counts[p2] || 0) + 1
+    }
+    if (parts.length >= 1) {
+      const p1 = parts[0]
+      p1Counts[p1] = (p1Counts[p1] || 0) + 1
+    }
   })
 
   let commonPrefix = ''
-  const sortedPrefixes = Object.entries(prefixCounts).sort((a, b) => b[1] - a[1])
-  if (sortedPrefixes.length > 0) {
-    const [topPrefix, topCount] = sortedPrefixes[0]
-    if (topCount / keys.length >= 0.6) {
-      commonPrefix = topPrefix + '_'
+  const sorted2 = Object.entries(p2Counts).sort((a, b) => b[1] - a[1])
+  if (sorted2.length > 0 && sorted2[0][1] / keys.length >= 0.6) {
+    commonPrefix = sorted2[0][0] + '_'
+  } else {
+    const sorted1 = Object.entries(p1Counts).sort((a, b) => b[1] - a[1])
+    if (sorted1.length > 0 && sorted1[0][1] / keys.length >= 0.6) {
+      commonPrefix = sorted1[0][0] + '_'
     }
   }
 
@@ -175,7 +276,8 @@ function buildSectionGroups(pageSections) {
     }
 
     const parts = keyAfterPrefix.split('_')
-    const rawGroup = (parts[0] || 'general').toLowerCase()
+    const rawSegment = (parts[0] || 'general').toLowerCase()
+    const rawGroup = normalizeRawGroup(rawSegment)
     const subKey = parts.length > 1 ? parts.slice(1).join('_') : parts[0]
 
     const enhancedSection = {
@@ -304,6 +406,18 @@ export default function TextEditorPage() {
       '/postgrado/autofinanciada',
       '/postgrado/diplomados',
       '/postgrado/diplomados-especialidades',
+      '/estudiantes/centro-estudiantes',
+      '/estudiantes/convocatorias-auxiliaturas',
+      '/estudiantes/auxiliaturas',
+      '/estudiantes/pasantias-bolsa-trabajo',
+      '/estudiantes/pasantias',
+      '/estudiantes/sociedad-cientifica',
+      '/estudiantes/sociedades-cientificas',
+      '/recursos/biblioteca',
+      '/recursos/banco-datos',
+      '/recursos/revistas',
+      '/recursos/tesis',
+      '/recursos/documentos',
     ].includes(slug)
 
   const changePage = (pageSlug) => {
@@ -854,6 +968,51 @@ export default function TextEditorPage() {
                       <IconBookOpen className="h-3.5 w-3.5" />
                       <span>Módulos de Postgrado</span>
                     </>
+                  ) : activePageSlug === '/estudiantes/centro-estudiantes' ? (
+                    <>
+                      <IconUsers className="h-3.5 w-3.5" />
+                      <span>Directiva Estudiantil</span>
+                    </>
+                  ) : ['/estudiantes/convocatorias-auxiliaturas', '/estudiantes/auxiliaturas'].includes(activePageSlug) ? (
+                    <>
+                      <IconCalendar className="h-3.5 w-3.5" />
+                      <span>Convocatorias de Auxiliatura</span>
+                    </>
+                  ) : ['/estudiantes/pasantias-bolsa-trabajo', '/estudiantes/pasantias'].includes(activePageSlug) ? (
+                    <>
+                      <IconHandshake className="h-3.5 w-3.5" />
+                      <span>Pasantías y Empleo</span>
+                    </>
+                  ) : ['/estudiantes/sociedad-cientifica', '/estudiantes/sociedades-cientificas'].includes(activePageSlug) ? (
+                    <>
+                      <IconBookOpen className="h-3.5 w-3.5" />
+                      <span>Publicaciones Estudiantiles</span>
+                    </>
+                  ) : activePageSlug === '/recursos/biblioteca' ? (
+                    <>
+                      <IconBookOpen className="h-3.5 w-3.5" />
+                      <span>Catálogo de Libros</span>
+                    </>
+                  ) : activePageSlug === '/recursos/revistas' ? (
+                    <>
+                      <IconFileText className="h-3.5 w-3.5" />
+                      <span>Revistas Académicas</span>
+                    </>
+                  ) : activePageSlug === '/recursos/documentos' ? (
+                    <>
+                      <IconFileText className="h-3.5 w-3.5" />
+                      <span>Documentos Digitales</span>
+                    </>
+                  ) : activePageSlug === '/recursos/tesis' ? (
+                    <>
+                      <IconGraduationCap className="h-3.5 w-3.5" />
+                      <span>Tesis de Grado</span>
+                    </>
+                  ) : activePageSlug === '/recursos/banco-datos' ? (
+                    <>
+                      <IconLayers className="h-3.5 w-3.5" />
+                      <span>Bancos de Datos</span>
+                    </>
                   ) : (
                     <>
                       <IconBookOpen className="h-3.5 w-3.5" />
@@ -861,6 +1020,36 @@ export default function TextEditorPage() {
                     </>
                   )}
                 </button>
+
+                {activePageSlug === '/recursos/biblioteca' && (
+                  <button
+                    type="button"
+                    onClick={() => setPageMode('autores')}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
+                      pageMode === 'autores'
+                        ? 'bg-umsa-blue text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <IconUsers className="h-3.5 w-3.5" />
+                    <span>Autores</span>
+                  </button>
+                )}
+
+                {activePageSlug === '/recursos/banco-datos' && (
+                  <button
+                    type="button"
+                    onClick={() => setPageMode('archivos')}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
+                      pageMode === 'archivos'
+                        ? 'bg-umsa-blue text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <IconFileText className="h-3.5 w-3.5" />
+                    <span>Archivos de Datos</span>
+                  </button>
+                )}
 
                 {['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) && (
                   <button
@@ -876,10 +1065,35 @@ export default function TextEditorPage() {
                     <span>Programas de Postgrado</span>
                   </button>
                 )}
+
+                {['/estudiantes/sociedad-cientifica', '/estudiantes/sociedades-cientificas'].includes(activePageSlug) && (
+                  <button
+                    type="button"
+                    onClick={() => setPageMode('matriz')}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
+                      pageMode === 'matriz'
+                        ? 'bg-umsa-blue text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <IconLayers className="h-3.5 w-3.5" />
+                    <span>Matriz Científica</span>
+                  </button>
+                )}
               </div>
             )}
 
-            {pageMode === 'programas' ? (
+            {(pageMode === 'directivos' || (pageMode === 'crud' && activePageSlug === '/estudiantes/centro-estudiantes')) ? (
+              <DirectivoEstudianteCrud />
+            ) : (pageMode === 'auxiliaturas' || (pageMode === 'crud' && ['/estudiantes/convocatorias-auxiliaturas', '/estudiantes/auxiliaturas'].includes(activePageSlug))) ? (
+              <ConvocatoriaAuxiliaturaCrud />
+            ) : (pageMode === 'pasantias' || (pageMode === 'crud' && ['/estudiantes/pasantias-bolsa-trabajo', '/estudiantes/pasantias'].includes(activePageSlug))) ? (
+              <PasantiaCrud />
+            ) : (pageMode === 'publicaciones' || (pageMode === 'crud' && ['/estudiantes/sociedad-cientifica', '/estudiantes/sociedades-cientificas'].includes(activePageSlug))) ? (
+              <PublicacionesEstudiantilesCrud />
+            ) : pageMode === 'matriz' ? (
+              <MatrizCientificaCrud />
+            ) : pageMode === 'programas' ? (
               <ProgramaCrud />
             ) : pageMode === 'modulos' ? (
               <ModuloCrud />
@@ -923,6 +1137,20 @@ export default function TextEditorPage() {
               <ConvocatoriaCrud />
             ) : pageMode === 'crud' && ['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) ? (
               <ModuloCrud />
+            ) : pageMode === 'autores' ? (
+              <AutorCrud />
+            ) : (pageMode === 'libros' || (pageMode === 'crud' && activePageSlug === '/recursos/biblioteca')) ? (
+              <LibroCrud />
+            ) : (pageMode === 'revistas' || (pageMode === 'crud' && activePageSlug === '/recursos/revistas')) ? (
+              <RevistaCrud />
+            ) : (pageMode === 'documentos' || (pageMode === 'crud' && activePageSlug === '/recursos/documentos')) ? (
+              <DocumentoDigitalCrud />
+            ) : (pageMode === 'tesis' || (pageMode === 'crud' && activePageSlug === '/recursos/tesis')) ? (
+              <TesisCrud />
+            ) : (pageMode === 'banco' || (pageMode === 'crud' && activePageSlug === '/recursos/banco-datos')) ? (
+              <BancoDatosCrud />
+            ) : pageMode === 'archivos' ? (
+              <DatosArchivoCrud />
             ) : activeSection ? (
               <>
                 {/* Section context breadcrumb and group navigation */}
@@ -1236,6 +1464,14 @@ function findInitialPage(sections) {
 }
 
 function normalizePageSlug(slug) {
+  if (!slug) return '/'
   if (slug === '/acreditacion') return '/institucional/acreditacion'
+  if (slug === '/postgrado') return '/postgrado/maestria-terminal'
+  if (slug === '/postgrado/autofinanciada') return '/postgrado/maestria-autofinanciada'
+  if (slug === '/postgrado/diplomados-especialidades') return '/postgrado/diplomados'
+  if (slug === '/estudiantes/tramites') return '/estudiantes/guia-seguimiento-tramites'
+  if (slug === '/estudiantes/auxiliaturas') return '/estudiantes/convocatorias-auxiliaturas'
+  if (slug === '/estudiantes/pasantias') return '/estudiantes/pasantias-bolsa-trabajo'
+  if (slug === '/estudiantes/sociedades-cientificas') return '/estudiantes/sociedad-cientifica'
   return slug
 }

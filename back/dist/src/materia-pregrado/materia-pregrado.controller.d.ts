@@ -9,8 +9,8 @@ export declare class MateriaPregradoController {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -27,8 +27,8 @@ export declare class MateriaPregradoController {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -45,8 +45,8 @@ export declare class MateriaPregradoController {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -63,8 +63,8 @@ export declare class MateriaPregradoController {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -83,8 +83,8 @@ export declare class MateriaPregradoController {
         semestre: number;
     }>;
     assignPlan(id: number, planId: number): Promise<{
-        idPlanEstudio: number;
         idMateriaAct: number;
+        idPlanEstudio: number;
     }>;
     unassignPlan(id: number, planId: number): Promise<import("../../generated/prisma/internal/prismaNamespace").BatchPayload>;
 }

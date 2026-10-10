@@ -17,8 +17,8 @@ export declare class MateriaPregradoService {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -35,8 +35,8 @@ export declare class MateriaPregradoService {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -53,8 +53,8 @@ export declare class MateriaPregradoService {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -71,8 +71,8 @@ export declare class MateriaPregradoService {
                 nombrePlan: string;
             };
         } & {
-            idPlanEstudio: number;
             idMateriaAct: number;
+            idPlanEstudio: number;
         })[];
     } & {
         idMateriaAct: number;
@@ -91,8 +91,8 @@ export declare class MateriaPregradoService {
         semestre: number;
     }>;
     assignPlan(idMateriaAct: number, idPlanEstudio: number): Promise<{
-        idPlanEstudio: number;
         idMateriaAct: number;
+        idPlanEstudio: number;
     }>;
     unassignPlan(idMateriaAct: number, idPlanEstudio: number): Promise<import("../../generated/prisma/internal/prismaNamespace").BatchPayload>;
     private ensureExists;

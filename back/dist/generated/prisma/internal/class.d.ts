@@ -78,5 +78,41 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get incluyePosgrado(): Prisma.IncluyePosgradoDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get directivoEstudiante(): Prisma.DirectivoEstudianteDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get convocatoriaAuxiliatura(): Prisma.ConvocatoriaAuxiliaturaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get pasantia(): Prisma.PasantiaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get publicacionesEstudiantiles(): Prisma.PublicacionesEstudiantilesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get matrizCientifica(): Prisma.MatrizCientificaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get autor(): Prisma.AutorDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get libro(): Prisma.LibroDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get revista(): Prisma.RevistaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get documentoDigital(): Prisma.DocumentoDigitalDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get tesis(): Prisma.TesisDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get bancoDatos(): Prisma.BancoDatosDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get datosArchivo(): Prisma.DatosArchivoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;

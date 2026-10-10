@@ -16,12 +16,12 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idPrograma: number;
             idModulo: number;
+            idPrograma: number;
         })[];
     } & {
-        nombre: string;
         tipo: string;
+        nombre: string;
         idPrograma: number;
         costo: string;
     })[]>;
@@ -39,12 +39,12 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idPrograma: number;
             idModulo: number;
+            idPrograma: number;
         })[];
     } & {
-        nombre: string;
         tipo: string;
+        nombre: string;
         idPrograma: number;
         costo: string;
     }>;
@@ -62,12 +62,12 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idPrograma: number;
             idModulo: number;
+            idPrograma: number;
         })[];
     } & {
-        nombre: string;
         tipo: string;
+        nombre: string;
         idPrograma: number;
         costo: string;
     }>;
@@ -85,12 +85,12 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idPrograma: number;
             idModulo: number;
+            idPrograma: number;
         })[];
     } & {
-        nombre: string;
         tipo: string;
+        nombre: string;
         idPrograma: number;
         costo: string;
     }>;

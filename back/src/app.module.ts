@@ -16,6 +16,18 @@ import { ConvocatoriaModule } from './convocatoria/convocatoria.module';
 import { ProgramaModule } from './programa/programa.module';
 import { ModuloModule } from './modulo/modulo.module';
 import { UploadModule } from './upload/upload.module';
+import { DirectivoEstudianteModule } from './directivo-estudiante/directivo-estudiante.module';
+import { ConvocatoriaAuxiliaturaModule } from './convocatoria-auxiliatura/convocatoria-auxiliatura.module';
+import { PasantiaModule } from './pasantia/pasantia.module';
+import { PublicacionesEstudiantilesModule } from './publicaciones-estudiantiles/publicaciones-estudiantiles.module';
+import { MatrizCientificaModule } from './matriz-cientifica/matriz-cientifica.module';
+import { AutorModule } from './autor/autor.module';
+import { LibroModule } from './libro/libro.module';
+import { RevistaModule } from './revista/revista.module';
+import { DocumentoDigitalModule } from './documento-digital/documento-digital.module';
+import { TesisModule } from './tesis/tesis.module';
+import { BancoDatosModule } from './banco-datos/banco-datos.module';
+import { DatosArchivoModule } from './datos-archivo/datos-archivo.module';
 
 @Module({
   imports: [
@@ -36,6 +48,18 @@ import { UploadModule } from './upload/upload.module';
     ProgramaModule,
     ModuloModule,
     UploadModule,
+    DirectivoEstudianteModule,
+    ConvocatoriaAuxiliaturaModule,
+    PasantiaModule,
+    PublicacionesEstudiantilesModule,
+    MatrizCientificaModule,
+    AutorModule,
+    LibroModule,
+    RevistaModule,
+    DocumentoDigitalModule,
+    TesisModule,
+    BancoDatosModule,
+    DatosArchivoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
