@@ -314,4 +314,31 @@ model DatosArchivo {
   @@map("datos_archivo")
 }
 
-
+model Noticia {
+  id              Int       @id @default(autoincrement())
+  categoria       String    @db.VarChar(100)
+  color           String    @db.VarChar(20)
+  fecha           DateTime  @db.Date
+  titulo          String    @db.VarChar(255)
+  extracto        String    @db.Text
+  imagenUrl       String?   @map("imagen_url") @db.VarChar(500)
+  tiempoLectura   String    @map("tiempo_lectura") @db.VarChar(50)
+  enlace          String    @db.VarChar(255)
+  estado          String    @default("published") @db.VarChar(20)
+  fechaExpiracion DateTime? @map("fecha_expiracion") @db.Date
+
+  @@map("noticia")
+}
+
+model Evento {
+  id        Int      @id @default(autoincrement())
+  fecha     DateTime @db.Date
+  color     String   @db.VarChar(20)
+  categoria String   @db.VarChar(100)
+  titulo    String   @db.VarChar(255)
+  hora      String   @db.VarChar(50)
+  ubicacion String   @db.VarChar(255)
+  estado    String   @default("published") @db.VarChar(20)
+
+  @@map("evento")
+}

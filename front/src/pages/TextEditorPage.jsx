@@ -23,6 +23,9 @@ import DocumentoDigitalCrud from '../components/DocumentoDigitalCrud'
 import TesisCrud from '../components/TesisCrud'
 import BancoDatosCrud from '../components/BancoDatosCrud'
 import DatosArchivoCrud from '../components/DatosArchivoCrud'
+import NoticiaCrud from '../components/NoticiaCrud'
+import EventoCrud from '../components/EventoCrud'
+
 import {
   IconSearch,
   IconFileText,
@@ -110,6 +113,7 @@ const pageGroups = [
       { slug: '/recursos/revistas', label: 'Revistas' },
       { slug: '/recursos/tesis', label: 'Tesis' },
       { slug: '/recursos/documentos', label: 'Documentos' },
+
     ],
   },
   { label: 'Contacto', items: [{ slug: '/contacto', label: 'Contacto' }] },
@@ -418,6 +422,7 @@ export default function TextEditorPage() {
       '/recursos/revistas',
       '/recursos/tesis',
       '/recursos/documentos',
+      '/',
     ].includes(slug)
 
   const changePage = (pageSlug) => {
@@ -1013,6 +1018,11 @@ export default function TextEditorPage() {
                       <IconLayers className="h-3.5 w-3.5" />
                       <span>Bancos de Datos</span>
                     </>
+                    ) : activePageSlug === '/' ? (
+                    <>
+                      <IconFileText className="h-3.5 w-3.5" />
+                      <span>Noticias</span>
+                    </>
                   ) : (
                     <>
                       <IconBookOpen className="h-3.5 w-3.5" />
@@ -1021,6 +1031,20 @@ export default function TextEditorPage() {
                   )}
                 </button>
 
+                {activePageSlug === '/' && (
+                  <button
+                    type="button"
+                    onClick={() => setPageMode('eventos')}
+                    className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition ${
+                      pageMode === 'eventos'
+                        ? 'bg-umsa-blue text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <IconCalendar className="h-3.5 w-3.5" />
+                    <span>Agenda</span>
+                  </button>
+                )}
                 {activePageSlug === '/recursos/biblioteca' && (
                   <button
                     type="button"
@@ -1137,6 +1161,10 @@ export default function TextEditorPage() {
               <ConvocatoriaCrud />
             ) : pageMode === 'crud' && ['/postgrado', '/postgrado/maestria-terminal', '/postgrado/maestria-autofinanciada', '/postgrado/autofinanciada', '/postgrado/diplomados', '/postgrado/diplomados-especialidades'].includes(activePageSlug) ? (
               <ModuloCrud />
+            ) : pageMode === 'crud' && activePageSlug === '/' ? (
+              <NoticiaCrud />
+            ) : pageMode === 'eventos' ? (
+              <EventoCrud />
             ) : pageMode === 'autores' ? (
               <AutorCrud />
             ) : (pageMode === 'libros' || (pageMode === 'crud' && activePageSlug === '/recursos/biblioteca')) ? (

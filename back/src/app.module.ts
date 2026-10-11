@@ -28,6 +28,8 @@ import { DocumentoDigitalModule } from './documento-digital/documento-digital.mo
 import { TesisModule } from './tesis/tesis.module';
 import { BancoDatosModule } from './banco-datos/banco-datos.module';
 import { DatosArchivoModule } from './datos-archivo/datos-archivo.module';
+import { NoticiaModule } from './noticia/noticia.module';
+import { EventoModule } from './evento/evento.module';
 
 @Module({
   imports: [
@@ -60,6 +62,8 @@ import { DatosArchivoModule } from './datos-archivo/datos-archivo.module';
     TesisModule,
     BancoDatosModule,
     DatosArchivoModule,
+    NoticiaModule,
+    EventoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
