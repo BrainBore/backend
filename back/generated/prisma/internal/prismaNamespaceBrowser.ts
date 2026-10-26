@@ -78,7 +78,9 @@ export const ModelName = {
   DocumentoDigital: 'DocumentoDigital',
   Tesis: 'Tesis',
   BancoDatos: 'BancoDatos',
-  DatosArchivo: 'DatosArchivo'
+  DatosArchivo: 'DatosArchivo',
+  Noticia: 'Noticia',
+  Evento: 'Evento'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,6 +411,37 @@ export const DatosArchivoScalarFieldEnum = {
 } as const
 
 export type DatosArchivoScalarFieldEnum = (typeof DatosArchivoScalarFieldEnum)[keyof typeof DatosArchivoScalarFieldEnum]
+
+
+export const NoticiaScalarFieldEnum = {
+  id: 'id',
+  categoria: 'categoria',
+  color: 'color',
+  fecha: 'fecha',
+  titulo: 'titulo',
+  extracto: 'extracto',
+  imagenUrl: 'imagenUrl',
+  tiempoLectura: 'tiempoLectura',
+  enlace: 'enlace',
+  estado: 'estado',
+  fechaExpiracion: 'fechaExpiracion'
+} as const
+
+export type NoticiaScalarFieldEnum = (typeof NoticiaScalarFieldEnum)[keyof typeof NoticiaScalarFieldEnum]
+
+
+export const EventoScalarFieldEnum = {
+  id: 'id',
+  fecha: 'fecha',
+  color: 'color',
+  categoria: 'categoria',
+  titulo: 'titulo',
+  hora: 'hora',
+  ubicacion: 'ubicacion',
+  estado: 'estado'
+} as const
+
+export type EventoScalarFieldEnum = (typeof EventoScalarFieldEnum)[keyof typeof EventoScalarFieldEnum]
 
 
 export const SortOrder = {

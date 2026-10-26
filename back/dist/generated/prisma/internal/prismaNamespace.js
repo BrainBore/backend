@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.DatosArchivoScalarFieldEnum = exports.BancoDatosScalarFieldEnum = exports.TesisScalarFieldEnum = exports.DocumentoDigitalScalarFieldEnum = exports.RevistaScalarFieldEnum = exports.LibroScalarFieldEnum = exports.AutorScalarFieldEnum = exports.MatrizCientificaScalarFieldEnum = exports.PublicacionesEstudiantilesScalarFieldEnum = exports.PasantiaScalarFieldEnum = exports.ConvocatoriaAuxiliaturaScalarFieldEnum = exports.DirectivoEstudianteScalarFieldEnum = exports.IncluyePosgradoScalarFieldEnum = exports.OrganizaPosgradoScalarFieldEnum = exports.ModuloScalarFieldEnum = exports.ProgramaScalarFieldEnum = exports.ConvocatoriaScalarFieldEnum = exports.ConvalidaScalarFieldEnum = exports.IncluyeScalarFieldEnum = exports.PlanEstudiosScalarFieldEnum = exports.MateriaPregradoScalarFieldEnum = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
-exports.defineExtension = void 0;
+exports.SortOrder = exports.EventoScalarFieldEnum = exports.NoticiaScalarFieldEnum = exports.DatosArchivoScalarFieldEnum = exports.BancoDatosScalarFieldEnum = exports.TesisScalarFieldEnum = exports.DocumentoDigitalScalarFieldEnum = exports.RevistaScalarFieldEnum = exports.LibroScalarFieldEnum = exports.AutorScalarFieldEnum = exports.MatrizCientificaScalarFieldEnum = exports.PublicacionesEstudiantilesScalarFieldEnum = exports.PasantiaScalarFieldEnum = exports.ConvocatoriaAuxiliaturaScalarFieldEnum = exports.DirectivoEstudianteScalarFieldEnum = exports.IncluyePosgradoScalarFieldEnum = exports.OrganizaPosgradoScalarFieldEnum = exports.ModuloScalarFieldEnum = exports.ProgramaScalarFieldEnum = exports.ConvocatoriaScalarFieldEnum = exports.ConvalidaScalarFieldEnum = exports.IncluyeScalarFieldEnum = exports.PlanEstudiosScalarFieldEnum = exports.MateriaPregradoScalarFieldEnum = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.QueryMode = void 0;
 const runtime = require("@prisma/client/runtime/client");
 exports.PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
 exports.PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
@@ -55,7 +55,9 @@ exports.ModelName = {
     DocumentoDigital: 'DocumentoDigital',
     Tesis: 'Tesis',
     BancoDatos: 'BancoDatos',
-    DatosArchivo: 'DatosArchivo'
+    DatosArchivo: 'DatosArchivo',
+    Noticia: 'Noticia',
+    Evento: 'Evento'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -264,6 +266,29 @@ exports.DatosArchivoScalarFieldEnum = {
     peso: 'peso',
     linkDescarga: 'linkDescarga',
     idBancoDatos: 'idBancoDatos'
+};
+exports.NoticiaScalarFieldEnum = {
+    id: 'id',
+    categoria: 'categoria',
+    color: 'color',
+    fecha: 'fecha',
+    titulo: 'titulo',
+    extracto: 'extracto',
+    imagenUrl: 'imagenUrl',
+    tiempoLectura: 'tiempoLectura',
+    enlace: 'enlace',
+    estado: 'estado',
+    fechaExpiracion: 'fechaExpiracion'
+};
+exports.EventoScalarFieldEnum = {
+    id: 'id',
+    fecha: 'fecha',
+    color: 'color',
+    categoria: 'categoria',
+    titulo: 'titulo',
+    hora: 'hora',
+    ubicacion: 'ubicacion',
+    estado: 'estado'
 };
 exports.SortOrder = {
     asc: 'asc',

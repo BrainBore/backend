@@ -3,6 +3,11 @@ export declare class ModuloController {
     private readonly moduloService;
     constructor(moduloService: ModuloService);
     findAll(programaId?: string): Promise<({
+        incluye: {
+            idModulo: number;
+            horasPresencial: string;
+            horasInvestigacion: string;
+        };
         organiza: ({
             programa: {
                 tipo: string;
@@ -11,20 +16,20 @@ export declare class ModuloController {
                 costo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
-        })[];
-        incluye: {
             idModulo: number;
-            horasPresencial: string;
-            horasInvestigacion: string;
-        };
+        })[];
     } & {
         idModulo: number;
         tituloModulo: string;
         numeroModulo: string;
     })[]>;
     findOne(id: number): Promise<{
+        incluye: {
+            idModulo: number;
+            horasPresencial: string;
+            horasInvestigacion: string;
+        };
         organiza: ({
             programa: {
                 tipo: string;
@@ -33,20 +38,20 @@ export declare class ModuloController {
                 costo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
-        })[];
-        incluye: {
             idModulo: number;
-            horasPresencial: string;
-            horasInvestigacion: string;
-        };
+        })[];
     } & {
         idModulo: number;
         tituloModulo: string;
         numeroModulo: string;
     }>;
     create(data: ModuloDto): Promise<{
+        incluye: {
+            idModulo: number;
+            horasPresencial: string;
+            horasInvestigacion: string;
+        };
         organiza: ({
             programa: {
                 tipo: string;
@@ -55,20 +60,20 @@ export declare class ModuloController {
                 costo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
-        })[];
-        incluye: {
             idModulo: number;
-            horasPresencial: string;
-            horasInvestigacion: string;
-        };
+        })[];
     } & {
         idModulo: number;
         tituloModulo: string;
         numeroModulo: string;
     }>;
     update(id: number, data: Partial<ModuloDto>): Promise<{
+        incluye: {
+            idModulo: number;
+            horasPresencial: string;
+            horasInvestigacion: string;
+        };
         organiza: ({
             programa: {
                 tipo: string;
@@ -77,14 +82,9 @@ export declare class ModuloController {
                 costo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
-        })[];
-        incluye: {
             idModulo: number;
-            horasPresencial: string;
-            horasInvestigacion: string;
-        };
+        })[];
     } & {
         idModulo: number;
         tituloModulo: string;

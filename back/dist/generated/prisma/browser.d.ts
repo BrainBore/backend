@@ -30,3 +30,5 @@ export type DocumentoDigital = Prisma.DocumentoDigitalModel;
 export type Tesis = Prisma.TesisModel;
 export type BancoDatos = Prisma.BancoDatosModel;
 export type DatosArchivo = Prisma.DatosArchivoModel;
+export type Noticia = Prisma.NoticiaModel;
+export type Evento = Prisma.EventoModel;

@@ -39,6 +39,8 @@ export declare const ModelName: {
     readonly Tesis: "Tesis";
     readonly BancoDatos: "BancoDatos";
     readonly DatosArchivo: "DatosArchivo";
+    readonly Noticia: "Noticia";
+    readonly Evento: "Evento";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -278,6 +280,31 @@ export declare const DatosArchivoScalarFieldEnum: {
     readonly idBancoDatos: "idBancoDatos";
 };
 export type DatosArchivoScalarFieldEnum = (typeof DatosArchivoScalarFieldEnum)[keyof typeof DatosArchivoScalarFieldEnum];
+export declare const NoticiaScalarFieldEnum: {
+    readonly id: "id";
+    readonly categoria: "categoria";
+    readonly color: "color";
+    readonly fecha: "fecha";
+    readonly titulo: "titulo";
+    readonly extracto: "extracto";
+    readonly imagenUrl: "imagenUrl";
+    readonly tiempoLectura: "tiempoLectura";
+    readonly enlace: "enlace";
+    readonly estado: "estado";
+    readonly fechaExpiracion: "fechaExpiracion";
+};
+export type NoticiaScalarFieldEnum = (typeof NoticiaScalarFieldEnum)[keyof typeof NoticiaScalarFieldEnum];
+export declare const EventoScalarFieldEnum: {
+    readonly id: "id";
+    readonly fecha: "fecha";
+    readonly color: "color";
+    readonly categoria: "categoria";
+    readonly titulo: "titulo";
+    readonly hora: "hora";
+    readonly ubicacion: "ubicacion";
+    readonly estado: "estado";
+};
+export type EventoScalarFieldEnum = (typeof EventoScalarFieldEnum)[keyof typeof EventoScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

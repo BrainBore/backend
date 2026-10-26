@@ -22,8 +22,8 @@ export declare class ProgramaService {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -45,8 +45,8 @@ export declare class ProgramaService {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -68,8 +68,8 @@ export declare class ProgramaService {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -91,8 +91,8 @@ export declare class ProgramaService {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;

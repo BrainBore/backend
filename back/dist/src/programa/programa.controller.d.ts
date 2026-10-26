@@ -16,8 +16,8 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -39,8 +39,8 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -62,8 +62,8 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;
@@ -85,8 +85,8 @@ export declare class ProgramaController {
                 numeroModulo: string;
             };
         } & {
-            idModulo: number;
             idPrograma: number;
+            idModulo: number;
         })[];
     } & {
         tipo: string;

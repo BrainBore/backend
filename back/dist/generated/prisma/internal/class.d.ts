@@ -114,5 +114,11 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get datosArchivo(): Prisma.DatosArchivoDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get noticia(): Prisma.NoticiaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get evento(): Prisma.EventoDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;

@@ -11,37 +11,37 @@ export declare class PublicacionesEstudiantilesService {
     findAll(area?: string, anio?: number): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<{
         id: number;
         titulo: string;
-        autor: string;
-        anio: number;
         area: string;
+        anio: number;
+        autor: string;
     }[]>;
     findOne(id: number): Promise<{
         id: number;
         titulo: string;
-        autor: string;
-        anio: number;
         area: string;
+        anio: number;
+        autor: string;
     }>;
     create(data: PublicacionesEstudiantilesDto): Promise<{
         id: number;
         titulo: string;
-        autor: string;
-        anio: number;
         area: string;
+        anio: number;
+        autor: string;
     }>;
     update(id: number, data: Partial<PublicacionesEstudiantilesDto>): Promise<{
         id: number;
         titulo: string;
-        autor: string;
-        anio: number;
         area: string;
+        anio: number;
+        autor: string;
     }>;
     remove(id: number): Promise<{
         id: number;
         titulo: string;
-        autor: string;
-        anio: number;
         area: string;
+        anio: number;
+        autor: string;
     }>;
     private ensureExists;
     private executeWrite;

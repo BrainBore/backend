@@ -5,9 +5,9 @@ export declare class LibroController {
     findAll(search?: string, idAutor?: string): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<({
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -24,9 +24,9 @@ export declare class LibroController {
     findOne(id: number): Promise<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -43,9 +43,9 @@ export declare class LibroController {
     create(data: LibroDto): import("../../generated/prisma/models").Prisma__LibroClient<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -64,9 +64,9 @@ export declare class LibroController {
     update(id: number, data: Partial<LibroDto>): Promise<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {

@@ -424,7 +424,9 @@ export const ModelName = {
   DocumentoDigital: 'DocumentoDigital',
   Tesis: 'Tesis',
   BancoDatos: 'BancoDatos',
-  DatosArchivo: 'DatosArchivo'
+  DatosArchivo: 'DatosArchivo',
+  Noticia: 'Noticia',
+  Evento: 'Evento'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -440,7 +442,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad" | "convenio" | "materiaPregrado" | "planEstudios" | "incluye" | "convalida" | "convocatoria" | "programa" | "modulo" | "organizaPosgrado" | "incluyePosgrado" | "directivoEstudiante" | "convocatoriaAuxiliatura" | "pasantia" | "publicacionesEstudiantiles" | "matrizCientifica" | "autor" | "libro" | "revista" | "documentoDigital" | "tesis" | "bancoDatos" | "datosArchivo"
+    modelProps: "user" | "seccionPagina" | "docente" | "administrativo" | "auxiliar" | "estudianteAutoridad" | "convenio" | "materiaPregrado" | "planEstudios" | "incluye" | "convalida" | "convocatoria" | "programa" | "modulo" | "organizaPosgrado" | "incluyePosgrado" | "directivoEstudiante" | "convocatoriaAuxiliatura" | "pasantia" | "publicacionesEstudiantiles" | "matrizCientifica" | "autor" | "libro" | "revista" | "documentoDigital" | "tesis" | "bancoDatos" | "datosArchivo" | "noticia" | "evento"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2516,6 +2518,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Noticia: {
+      payload: Prisma.$NoticiaPayload<ExtArgs>
+      fields: Prisma.NoticiaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NoticiaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NoticiaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        findFirst: {
+          args: Prisma.NoticiaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NoticiaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        findMany: {
+          args: Prisma.NoticiaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>[]
+        }
+        create: {
+          args: Prisma.NoticiaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        createMany: {
+          args: Prisma.NoticiaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NoticiaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>[]
+        }
+        delete: {
+          args: Prisma.NoticiaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        update: {
+          args: Prisma.NoticiaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        deleteMany: {
+          args: Prisma.NoticiaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NoticiaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NoticiaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>[]
+        }
+        upsert: {
+          args: Prisma.NoticiaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NoticiaPayload>
+        }
+        aggregate: {
+          args: Prisma.NoticiaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNoticia>
+        }
+        groupBy: {
+          args: Prisma.NoticiaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NoticiaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NoticiaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NoticiaCountAggregateOutputType> | number
+        }
+      }
+    }
+    Evento: {
+      payload: Prisma.$EventoPayload<ExtArgs>
+      fields: Prisma.EventoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EventoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EventoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        findFirst: {
+          args: Prisma.EventoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EventoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        findMany: {
+          args: Prisma.EventoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>[]
+        }
+        create: {
+          args: Prisma.EventoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        createMany: {
+          args: Prisma.EventoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EventoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>[]
+        }
+        delete: {
+          args: Prisma.EventoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        update: {
+          args: Prisma.EventoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        deleteMany: {
+          args: Prisma.EventoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EventoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EventoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>[]
+        }
+        upsert: {
+          args: Prisma.EventoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventoPayload>
+        }
+        aggregate: {
+          args: Prisma.EventoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEvento>
+        }
+        groupBy: {
+          args: Prisma.EventoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EventoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EventoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EventoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2869,6 +3019,37 @@ export const DatosArchivoScalarFieldEnum = {
 export type DatosArchivoScalarFieldEnum = (typeof DatosArchivoScalarFieldEnum)[keyof typeof DatosArchivoScalarFieldEnum]
 
 
+export const NoticiaScalarFieldEnum = {
+  id: 'id',
+  categoria: 'categoria',
+  color: 'color',
+  fecha: 'fecha',
+  titulo: 'titulo',
+  extracto: 'extracto',
+  imagenUrl: 'imagenUrl',
+  tiempoLectura: 'tiempoLectura',
+  enlace: 'enlace',
+  estado: 'estado',
+  fechaExpiracion: 'fechaExpiracion'
+} as const
+
+export type NoticiaScalarFieldEnum = (typeof NoticiaScalarFieldEnum)[keyof typeof NoticiaScalarFieldEnum]
+
+
+export const EventoScalarFieldEnum = {
+  id: 'id',
+  fecha: 'fecha',
+  color: 'color',
+  categoria: 'categoria',
+  titulo: 'titulo',
+  hora: 'hora',
+  ubicacion: 'ubicacion',
+  estado: 'estado'
+} as const
+
+export type EventoScalarFieldEnum = (typeof EventoScalarFieldEnum)[keyof typeof EventoScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3133,6 +3314,8 @@ export type GlobalOmitConfig = {
   tesis?: Prisma.TesisOmit
   bancoDatos?: Prisma.BancoDatosOmit
   datosArchivo?: Prisma.DatosArchivoOmit
+  noticia?: Prisma.NoticiaOmit
+  evento?: Prisma.EventoOmit
 }
 
 /* Types for Logging */

@@ -179,3 +179,13 @@ export type BancoDatos = Prisma.BancoDatosModel
  * 
  */
 export type DatosArchivo = Prisma.DatosArchivoModel
+/**
+ * Model Noticia
+ * 
+ */
+export type Noticia = Prisma.NoticiaModel
+/**
+ * Model Evento
+ * 
+ */
+export type Evento = Prisma.EventoModel

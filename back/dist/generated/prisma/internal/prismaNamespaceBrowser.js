@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.DatosArchivoScalarFieldEnum = exports.BancoDatosScalarFieldEnum = exports.TesisScalarFieldEnum = exports.DocumentoDigitalScalarFieldEnum = exports.RevistaScalarFieldEnum = exports.LibroScalarFieldEnum = exports.AutorScalarFieldEnum = exports.MatrizCientificaScalarFieldEnum = exports.PublicacionesEstudiantilesScalarFieldEnum = exports.PasantiaScalarFieldEnum = exports.ConvocatoriaAuxiliaturaScalarFieldEnum = exports.DirectivoEstudianteScalarFieldEnum = exports.IncluyePosgradoScalarFieldEnum = exports.OrganizaPosgradoScalarFieldEnum = exports.ModuloScalarFieldEnum = exports.ProgramaScalarFieldEnum = exports.ConvocatoriaScalarFieldEnum = exports.ConvalidaScalarFieldEnum = exports.IncluyeScalarFieldEnum = exports.PlanEstudiosScalarFieldEnum = exports.MateriaPregradoScalarFieldEnum = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.EventoScalarFieldEnum = exports.NoticiaScalarFieldEnum = exports.DatosArchivoScalarFieldEnum = exports.BancoDatosScalarFieldEnum = exports.TesisScalarFieldEnum = exports.DocumentoDigitalScalarFieldEnum = exports.RevistaScalarFieldEnum = exports.LibroScalarFieldEnum = exports.AutorScalarFieldEnum = exports.MatrizCientificaScalarFieldEnum = exports.PublicacionesEstudiantilesScalarFieldEnum = exports.PasantiaScalarFieldEnum = exports.ConvocatoriaAuxiliaturaScalarFieldEnum = exports.DirectivoEstudianteScalarFieldEnum = exports.IncluyePosgradoScalarFieldEnum = exports.OrganizaPosgradoScalarFieldEnum = exports.ModuloScalarFieldEnum = exports.ProgramaScalarFieldEnum = exports.ConvocatoriaScalarFieldEnum = exports.ConvalidaScalarFieldEnum = exports.IncluyeScalarFieldEnum = exports.PlanEstudiosScalarFieldEnum = exports.MateriaPregradoScalarFieldEnum = exports.ConvenioScalarFieldEnum = exports.EstudianteAutoridadScalarFieldEnum = exports.AuxiliarScalarFieldEnum = exports.AdministrativoScalarFieldEnum = exports.DocenteScalarFieldEnum = exports.SeccionPaginaScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = require("@prisma/client/runtime/index-browser");
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -39,7 +39,9 @@ exports.ModelName = {
     DocumentoDigital: 'DocumentoDigital',
     Tesis: 'Tesis',
     BancoDatos: 'BancoDatos',
-    DatosArchivo: 'DatosArchivo'
+    DatosArchivo: 'DatosArchivo',
+    Noticia: 'Noticia',
+    Evento: 'Evento'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -248,6 +250,29 @@ exports.DatosArchivoScalarFieldEnum = {
     peso: 'peso',
     linkDescarga: 'linkDescarga',
     idBancoDatos: 'idBancoDatos'
+};
+exports.NoticiaScalarFieldEnum = {
+    id: 'id',
+    categoria: 'categoria',
+    color: 'color',
+    fecha: 'fecha',
+    titulo: 'titulo',
+    extracto: 'extracto',
+    imagenUrl: 'imagenUrl',
+    tiempoLectura: 'tiempoLectura',
+    enlace: 'enlace',
+    estado: 'estado',
+    fechaExpiracion: 'fechaExpiracion'
+};
+exports.EventoScalarFieldEnum = {
+    id: 'id',
+    fecha: 'fecha',
+    color: 'color',
+    categoria: 'categoria',
+    titulo: 'titulo',
+    hora: 'hora',
+    ubicacion: 'ubicacion',
+    estado: 'estado'
 };
 exports.SortOrder = {
     asc: 'asc',

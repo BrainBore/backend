@@ -15,9 +15,9 @@ export declare class LibroService {
     findAll(search?: string, idAutor?: number): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<({
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -34,9 +34,9 @@ export declare class LibroService {
     findOne(id: number): Promise<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -53,9 +53,9 @@ export declare class LibroService {
     create(data: LibroDto): import("../../generated/prisma/models").Prisma__LibroClient<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {
@@ -74,9 +74,9 @@ export declare class LibroService {
     update(id: number, data: Partial<LibroDto>): Promise<{
         autorRel: {
             id: number;
+            tipo: string | null;
             nombre: string | null;
             area: string | null;
-            tipo: string | null;
             ubicacion: string | null;
         };
     } & {

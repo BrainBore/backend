@@ -37,6 +37,8 @@ const documento_digital_module_1 = require("./documento-digital/documento-digita
 const tesis_module_1 = require("./tesis/tesis.module");
 const banco_datos_module_1 = require("./banco-datos/banco-datos.module");
 const datos_archivo_module_1 = require("./datos-archivo/datos-archivo.module");
+const noticia_module_1 = require("./noticia/noticia.module");
+const evento_module_1 = require("./evento/evento.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -72,6 +74,8 @@ exports.AppModule = AppModule = __decorate([
             tesis_module_1.TesisModule,
             banco_datos_module_1.BancoDatosModule,
             datos_archivo_module_1.DatosArchivoModule,
+            noticia_module_1.NoticiaModule,
+            evento_module_1.EventoModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

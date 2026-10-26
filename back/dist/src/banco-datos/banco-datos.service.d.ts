@@ -13,52 +13,52 @@ export declare class BancoDatosService {
         archivos: {
             id: number;
             titulo: string | null;
-            formato: string | null;
             peso: string | null;
             linkDescarga: string | null;
+            formato: string | null;
             idBancoDatos: number | null;
         }[];
     } & {
         id: number;
-        titulo: string | null;
         tipo: string | null;
-        fuente: string | null;
+        titulo: string | null;
         anio: number | null;
         resumen: string | null;
+        fuente: string | null;
     })[]>;
     findOne(id: number): Promise<{
         archivos: {
             id: number;
             titulo: string | null;
-            formato: string | null;
             peso: string | null;
             linkDescarga: string | null;
+            formato: string | null;
             idBancoDatos: number | null;
         }[];
     } & {
         id: number;
-        titulo: string | null;
         tipo: string | null;
-        fuente: string | null;
+        titulo: string | null;
         anio: number | null;
         resumen: string | null;
+        fuente: string | null;
     }>;
     create(data: BancoDatosDto): import("../../generated/prisma/models").Prisma__BancoDatosClient<{
         archivos: {
             id: number;
             titulo: string | null;
-            formato: string | null;
             peso: string | null;
             linkDescarga: string | null;
+            formato: string | null;
             idBancoDatos: number | null;
         }[];
     } & {
         id: number;
-        titulo: string | null;
         tipo: string | null;
-        fuente: string | null;
+        titulo: string | null;
         anio: number | null;
         resumen: string | null;
+        fuente: string | null;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, {
         omit: import("../../generated/prisma/internal/prismaNamespace").GlobalOmitConfig;
     }>;
@@ -66,26 +66,26 @@ export declare class BancoDatosService {
         archivos: {
             id: number;
             titulo: string | null;
-            formato: string | null;
             peso: string | null;
             linkDescarga: string | null;
+            formato: string | null;
             idBancoDatos: number | null;
         }[];
     } & {
         id: number;
-        titulo: string | null;
         tipo: string | null;
-        fuente: string | null;
+        titulo: string | null;
         anio: number | null;
         resumen: string | null;
+        fuente: string | null;
     }>;
     remove(id: number): Promise<{
         id: number;
-        titulo: string | null;
         tipo: string | null;
-        fuente: string | null;
+        titulo: string | null;
         anio: number | null;
         resumen: string | null;
+        fuente: string | null;
     }>;
     private ensureExists;
 }
